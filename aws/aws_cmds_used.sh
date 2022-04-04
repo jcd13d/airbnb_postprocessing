@@ -32,3 +32,7 @@ sudo yum install git
 sudo yum install tmux
 
 git clone git@github.com:jcd13d/airbnb_postprocessing.git
+
+git clone git@github.com:jcd13d/airbnb_postprocessing.git
+
+ssh -i ~/.ssh/first-ec2-key-pair.pem -N -L 8157:ec2-54-87-242-119.compute-1.amazonaws.com:8088 hadoop@ec2-54-87-242-119.compute-1.amazonaws.com

@@ -1,7 +1,7 @@
 import sys
 
-import s3fs
-import fastparquet as fp
+# import s3fs
+# import fastparquet as fp
 from pyspark.sql import SparkSession
 from pyspark.conf import SparkConf
 
@@ -71,12 +71,14 @@ if __name__ == "__main__":
     spark = SparkSession.builder.appName("processor").getOrCreate()
     print("SparkSession Created successfully")
 
-    data_loc = "s3a://jd-s3-test-bucket9/data/occupancy_beta/array_1/"
+    data_loc = "s3://jd-s3-test-bucket9/data/occupancy_beta_full/"
     out_loc = "s3://jd-s3-test-bucket9/data/test_spark_out"
 
     df = spark.read.parquet(data_loc)
 
     df.printSchema()
+
+    df.show()
 
 
 

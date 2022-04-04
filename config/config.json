@@ -1,0 +1,16 @@
+{
+  "batch_job_template": {
+    "jobName": "running-scraper-1",
+    "jobQueue": "batch-queue-cli",
+    "arrayProperties": {
+      "size": 6
+    },
+    "jobDefinition": "aws-batch-scraper-1",
+    "propagateTags": true,
+    "timeout": {
+      "attemptDurationSeconds": 900
+    }
+  },
+  "id_list_location": "/Users/justindiemmanuele/Documents/projects/airbnb_scraper/miami_ids.json",
+  "out_loc": "id_configs"
+}

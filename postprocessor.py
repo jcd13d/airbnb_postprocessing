@@ -67,29 +67,8 @@ class PostProcessorSpark(PostProcessor):
 
 if __name__ == "__main__":
 
-    if len(sys.argv) != 3:
-        print("Usage  : spark_s3_integration.py <AWS_ACCESS_KEY_ID> <AWS_SECRET_ACCESS_KEY>", file=sys.stderr)
-        print("Example: spark_s3_integration.py ranga_aws_access_key ranga_aws_secret_key", file=sys.stderr)
-        exit(-1)
-
-    awsAccessKey = sys.argv[1]
-    awsSecretKey = sys.argv[2]
-
-    conf = (
-        SparkConf()
-            .setAppName("PySpark S3 Integration Example")
-            .set("spark.hadoop.fs.s3a.access.key", awsAccessKey)
-            .set("spark.hadoop.fs.s3a.secret.key", awsSecretKey)
-            .set("spark.hadoop.fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem")
-            .set("spark.hadoop.mapreduce.fileoutputcommitter.algorithm.version", "2")
-            .set("spark.speculation", "false")
-            .set("spark.hadoop.mapreduce.fileoutputcommitter.cleanup-failures.ignored", "true")
-            .set("fs.s3a.experimental.input.fadvise", "random")
-            .setIfMissing("spark.master", "local")
-    )
-
     # Creating the SparkSession object
-    spark = SparkSession.builder.config(conf=conf).getOrCreate()
+    spark = SparkSession.builder.appName("processor").getOrCreate()
     print("SparkSession Created successfully")
 
     data_loc = "s3a://jd-s3-test-bucket9/data/occupancy_beta/array_1/"
@@ -98,5 +77,6 @@ if __name__ == "__main__":
     df = spark.read.parquet(data_loc)
 
     df.printSchema()
+
 
 

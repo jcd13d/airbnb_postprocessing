@@ -1,9 +1,6 @@
 from pyspark.sql import SparkSession
-from pyspark.conf import SparkConf
 from pyspark.sql import functions as F
 import s3fs
-import pandas as pd
-import os
 
 
 def recursive_list_dir(fs, dirs, levels=1, prepend="s3://"):
@@ -22,7 +19,7 @@ if __name__ == "__main__":
     partitions = 20
 
     data_loc = "s3://jd-s3-test-bucket9/data/occupancy_beta_2/"
-    out_loc = "s3://jd-s3-test-bucket9/data/test_spark_out"
+    out_loc = "s3://jd-s3-test-bucket9/data/test_spark_out_2"
 
     fs = s3fs.S3FileSystem()
 

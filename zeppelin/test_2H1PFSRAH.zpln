@@ -1,0 +1,319 @@
+﻿{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1649117110016_1077976523",
+      "id": "paragraph_1649117110016_1077976523",
+      "dateCreated": "2022-04-05T00:05:10+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:172",
+      "text": "%pyspark\ndata_dir = \"s3://jd-s3-test-bucket9/data/test_spark_out\"",
+      "dateUpdated": "2022-04-05T00:06:17+0000",
+      "dateFinished": "2022-04-05T00:06:17+0000",
+      "dateStarted": "2022-04-05T00:06:17+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      }
+    },
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-45-89.ec2.internal:4040/jobs/job?id=0",
+              "$$hashKey": "object:671"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1649117141345_1676828884",
+      "id": "paragraph_1649117141345_1676828884",
+      "dateCreated": "2022-04-05T00:05:41+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:318",
+      "text": "%pyspark\n\ndf = spark.read.parquet(data_dir)",
+      "dateUpdated": "2022-04-05T00:07:34+0000",
+      "dateFinished": "2022-04-05T00:07:44+0000",
+      "dateStarted": "2022-04-05T00:07:34+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      }
+    },
+    {
+      "text": "%pyspark\ndf.show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-04-05T00:08:14+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-45-89.ec2.internal:4040/jobs/job?id=1",
+              "$$hashKey": "object:777"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1649117254555_443417056",
+      "id": "paragraph_1649117254555_443417056",
+      "dateCreated": "2022-04-05T00:07:34+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:587",
+      "dateFinished": "2022-04-05T00:08:16+0000",
+      "dateStarted": "2022-04-05T00:08:14+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----+----------+---------+----------+----------+---------------------+----------------------+--------+-------------------+-----------+------------+\n|index|      date|available|max_nights|min_nights|available_for_checkin|available_for_checkout|bookable|             pulled|         id|parition_col|\n+-----+----------+---------+----------+----------+---------------------+----------------------+--------+-------------------+-----------+------------+\n|    0|2022-04-01|      0.0|    1125.0|       2.0|                  0.0|                   0.0|    null|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|    1|2022-04-02|      0.0|    1125.0|       2.0|                  0.0|                   0.0|    null|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|    2|2022-04-03|      0.0|    1125.0|       2.0|                  0.0|                   0.0|    null|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|    3|2022-04-04|      1.0|    1125.0|       2.0|                  1.0|                   0.0|    true|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|    4|2022-04-05|      1.0|    1125.0|       2.0|                  1.0|                   1.0|    true|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|    5|2022-04-06|      1.0|    1125.0|       2.0|                  0.0|                   1.0|    true|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|    6|2022-04-07|      0.0|    1125.0|       2.0|                  0.0|                   1.0|   false|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|    7|2022-04-08|      0.0|    1125.0|       2.0|                  0.0|                   0.0|   false|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|    8|2022-04-09|      1.0|    1125.0|       2.0|                  1.0|                   0.0|    true|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|    9|2022-04-10|      1.0|    1125.0|       2.0|                  1.0|                   1.0|    true|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|   10|2022-04-11|      1.0|    1125.0|       2.0|                  1.0|                   1.0|    true|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|   11|2022-04-12|      1.0|    1125.0|       2.0|                  1.0|                   1.0|    true|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|   12|2022-04-13|      1.0|    1125.0|       2.0|                  1.0|                   1.0|    true|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|   13|2022-04-14|      1.0|    1125.0|       2.0|                  1.0|                   1.0|    true|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|   14|2022-04-15|      1.0|    1125.0|       2.0|                  0.0|                   1.0|    true|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|   15|2022-04-16|      0.0|    1125.0|       2.0|                  0.0|                   1.0|   false|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|   16|2022-04-17|      0.0|    1125.0|       2.0|                  0.0|                   0.0|   false|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|   17|2022-04-18|      0.0|    1125.0|       2.0|                  0.0|                   0.0|   false|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|   18|2022-04-19|      1.0|    1125.0|       2.0|                  1.0|                   0.0|    true|04/04/2022 22:09:18|5.1378994E7|        14.0|\n|   19|2022-04-20|      1.0|    1125.0|       2.0|                  1.0|                   1.0|    true|04/04/2022 22:09:18|5.1378994E7|        14.0|\n+-----+----------+---------+----------+----------+---------------------+----------------------+--------+-------------------+-----------+------------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%pyspark\ndf.count()",
+      "user": "anonymous",
+      "dateUpdated": "2022-04-05T00:08:50+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-45-89.ec2.internal:4040/jobs/job?id=2",
+              "$$hashKey": "object:892"
+            },
+            {
+              "jobUrl": "http://ip-172-31-45-89.ec2.internal:4040/jobs/job?id=3",
+              "$$hashKey": "object:893"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1649117294007_1134567309",
+      "id": "paragraph_1649117294007_1134567309",
+      "dateCreated": "2022-04-05T00:08:14+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:677",
+      "dateFinished": "2022-04-05T00:08:53+0000",
+      "dateStarted": "2022-04-05T00:08:50+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "11430705\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%pyspark\ndf.summary()",
+      "user": "anonymous",
+      "dateUpdated": "2022-04-05T00:09:20+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-45-89.ec2.internal:4040/jobs/job?id=4",
+              "$$hashKey": "object:1012"
+            },
+            {
+              "jobUrl": "http://ip-172-31-45-89.ec2.internal:4040/jobs/job?id=5",
+              "$$hashKey": "object:1013"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1649117330325_161581574",
+      "id": "paragraph_1649117330325_161581574",
+      "dateCreated": "2022-04-05T00:08:50+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:782",
+      "dateFinished": "2022-04-05T00:10:20+0000",
+      "dateStarted": "2022-04-05T00:09:20+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "DataFrame[summary: string, index: string, date: string, available: string, max_nights: string, min_nights: string, available_for_checkin: string, available_for_checkout: string, pulled: string, id: string, parition_col: string]\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-04-05T00:09:20+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1649117360535_1357387417",
+      "id": "paragraph_1649117360535_1357387417",
+      "dateCreated": "2022-04-05T00:09:20+0000",
+      "status": "READY",
+      "focus": true,
+      "$$hashKey": "object:902"
+    }
+  ],
+  "name": "test",
+  "id": "2H1PFSRAH",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/JD/test"
+}

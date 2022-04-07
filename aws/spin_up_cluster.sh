@@ -11,4 +11,5 @@ aws emr create-cluster --applications Name=Spark Name=Zeppelin \
 --scale-down-behavior TERMINATE_AT_TASK_COMPLETION \
 --region us-east-1 \
 --bootstrap-actions Path="s3://jd-s3-test-bucket9/emr_test/set_up_cluster.sh" \
---steps file://aws/step_config.json
+--steps file://aws/step_config.json \
+--auto-terminate

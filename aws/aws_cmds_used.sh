@@ -48,7 +48,7 @@ aws emr ssh --cluster-id j-1LVRT4I8731SL --key-pair-file ~/first-ec2-key-pair.pe
 ssh hadoop@ec2-###-##-##-###.compute-1.amazonaws.com -i ~/mykeypair.pem
 
 # send keys for github
-scp -i ~/.ssh/first-ec2-key-pair.pem ~/.ssh/id_ed25519 hadoop@ec2-54-87-242-119.compute-1.amazonaws.com:~/.ssh/id_ed25519
+scp -i ~/.ssh/first-ec2-key-pair.pem ~/.ssh/id_ed25519 hadoop@ec2-54-144-43-62.compute-1.amazonaws.com:~/.ssh/id_ed25519
 
 # run on cluster
 sudo yum update
@@ -73,3 +73,8 @@ ssh -i ~/.ssh/first-ec2-key-pair.pem -N -L 8170:ec2-54-87-242-119.compute-1.amaz
 
 # going to want to use custom jar spark submit probably
 # https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-commandrunner.html
+
+# run from lambda function
+# https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/launch-a-spark-job-in-a-transient-emr-cluster-using-a-lambda-function.html
+
+s3://aws-logs-033046933810-us-east-1/elasticmapreduce/j-1JBF1GGNTOW1X/node/i-013d01409fa2450a0/bootstrap-actions/1/stderr.gz

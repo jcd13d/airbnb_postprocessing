@@ -19,7 +19,7 @@ if __name__ == "__main__":
     partitions = 20
 
     data_loc = "s3://jd-s3-test-bucket9/data/occupancy_beta_2/"
-    out_loc = "s3://jd-s3-test-bucket9/data/test_spark_out_2"
+    out_loc = "s3://jd-s3-test-bucket9/data/test_spark_out_3"
 
     fs = s3fs.S3FileSystem()
 

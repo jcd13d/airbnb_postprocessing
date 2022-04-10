@@ -77,4 +77,4 @@ ssh -i ~/.ssh/first-ec2-key-pair.pem -N -L 8170:ec2-54-87-242-119.compute-1.amaz
 # run from lambda function
 # https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/launch-a-spark-job-in-a-transient-emr-cluster-using-a-lambda-function.html
 
-s3://aws-logs-033046933810-us-east-1/elasticmapreduce/j-1JBF1GGNTOW1X/node/i-013d01409fa2450a0/bootstrap-actions/1/stderr.gz
+# s3://aws-logs-033046933810-us-east-1/elasticmapreduce/j-1JBF1GGNTOW1X/node/i-013d01409fa2450a0/bootstrap-actions/1/stderr.gz

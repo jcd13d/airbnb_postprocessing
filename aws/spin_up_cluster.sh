@@ -8,8 +8,8 @@ aws emr create-cluster --applications Name=Spark Name=Zeppelin \
 --auto-termination-policy '{"IdleTimeout":3600}' \
 --name 'cli-emr-cluster' \
 --instance-groups '[{"InstanceCount":2,"EbsConfiguration":{"EbsBlockDeviceConfigs":[{"VolumeSpecification":{"SizeInGB":32,"VolumeType":"gp2"},"VolumesPerInstance":2}]},"InstanceGroupType":"CORE","InstanceType":"m5.xlarge","Name":"Core Instance Group"},{"InstanceCount":1,"EbsConfiguration":{"EbsBlockDeviceConfigs":[{"VolumeSpecification":{"SizeInGB":32,"VolumeType":"gp2"},"VolumesPerInstance":2}]},"InstanceGroupType":"MASTER","InstanceType":"m5.xlarge","Name":"Master Instance Group"}]' \
---scale-down-behavior TERMINATE_AT_TASK_COMPLETION \
 --region us-east-1 \
 --bootstrap-actions Path="s3://jd-s3-test-bucket9/emr_test/set_up_cluster.sh" \
 --steps file://aws/step_config.json \
---auto-terminate
+#--auto-terminate
+#--scale-down-behavior TERMINATE_AT_TASK_COMPLETION \

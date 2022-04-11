@@ -1,5 +1,3 @@
-import sys
-
 import s3fs
 import fastparquet as fp
 from pyspark.sql import SparkSession

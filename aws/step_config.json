@@ -4,6 +4,6 @@
     "Name": "Postprocess",
     "ActionOnFailure": "CONTINUE",
     "Jar": "command-runner.jar",
-    "Args": ["spark-submit", "s3://jd-s3-test-bucket9/emr_test/spark_postprocessor.py"]
+    "Args": ["spark-submit", "--py-files", "s3://jd-s3-test-bucket9/emr_test/dependencies.zip", "s3://jd-s3-test-bucket9/emr_test/postprocessing.py"]
   }
 ]

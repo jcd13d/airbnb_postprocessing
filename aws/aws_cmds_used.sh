@@ -33,6 +33,11 @@ aws emr create-cluster --applications Name=Spark Name=Zeppelin \
 aws s3 cp config s3://jd-s3-test-bucket9/test_configs/ --recursive
 aws s3 cp ./aws/set_up_cluster.sh s3://jd-s3-test-bucket9/emr_test/set_up_cluster.sh
 aws s3 cp ./spark_postprocessor.py s3://jd-s3-test-bucket9/emr_test/spark_postprocessor.py
+aws s3 cp ./build/dependencies/dependencies.zip s3://jd-s3-test-bucket9/emr_test/dependencies.zip
+aws s3 cp ./postprocessing.py s3://jd-s3-test-bucket9/emr_test/postprocessing.py
+
+
+aws s3 cp ./spark_postprocessor.py s3://jd-s3-test-bucket9/emr_test/spark_postprocessor.py
 
 
 # to get ip address
@@ -44,11 +49,11 @@ aws emr describe-cluster --cluster-id j-1LVRT4I8731SL
 # scp keys to master node so I can use git
 
 # ec2-54-87-242-119.compute-1.amazonaws.com
-aws emr ssh --cluster-id j-1LVRT4I8731SL --key-pair-file ~/first-ec2-key-pair.pem
+aws emr ssh --cluster-id j-30EBOPNE7THT0 --key-pair-file ~/first-ec2-key-pair.pem
 ssh hadoop@ec2-###-##-##-###.compute-1.amazonaws.com -i ~/mykeypair.pem
 
 # send keys for github
-scp -i ~/.ssh/first-ec2-key-pair.pem ~/.ssh/id_ed25519 hadoop@ec2-54-144-43-62.compute-1.amazonaws.com:~/.ssh/id_ed25519
+scp -i ~/.ssh/first-ec2-key-pair.pem ~/.ssh/id_ed25519 hadoop@ec2-35-175-249-148.compute-1.amazonaws.com:~/.ssh/id_ed25519
 
 # run on cluster
 sudo yum update

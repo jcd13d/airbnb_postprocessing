@@ -29,6 +29,9 @@ aws emr create-cluster --applications Name=Spark Name=Zeppelin \
 --steps file://aws/step_config.json
 
 
+spark-submit --py-files s3://jd-s3-test-bucket9/emr_test/dependencies.zip s3://jd-s3-test-bucket9/emr_test/postprocessing.py
+
+
 # copy files to s3 location
 aws s3 cp config s3://jd-s3-test-bucket9/test_configs/ --recursive
 aws s3 cp ./aws/set_up_cluster.sh s3://jd-s3-test-bucket9/emr_test/set_up_cluster.sh
@@ -39,6 +42,7 @@ aws s3 cp ./postprocessing.py s3://jd-s3-test-bucket9/emr_test/postprocessing.py
 
 aws s3 cp ./spark_postprocessor.py s3://jd-s3-test-bucket9/emr_test/spark_postprocessor.py
 
+zip -r build/dependencies/dependencies.zip postprocessor
 
 # to get ip address
 aws emr list-clusters
@@ -50,7 +54,8 @@ aws emr describe-cluster --cluster-id j-1LVRT4I8731SL
 
 # ec2-54-87-242-119.compute-1.amazonaws.com
 aws emr ssh --cluster-id j-30EBOPNE7THT0 --key-pair-file ~/first-ec2-key-pair.pem
-ssh hadoop@ec2-###-##-##-###.compute-1.amazonaws.com -i ~/mykeypair.pem
+ssh -i ~/first-ec2-key-pair.pem hadoop@ec2-35-175-249-148.compute-1.amazonaws.com
+
 
 # send keys for github
 scp -i ~/.ssh/first-ec2-key-pair.pem ~/.ssh/id_ed25519 hadoop@ec2-35-175-249-148.compute-1.amazonaws.com:~/.ssh/id_ed25519
@@ -63,9 +68,9 @@ sudo yum install tmux
 git clone git@github.com:jcd13d/airbnb_postprocessing.git
 
 # tunnel 8088 to 8157 on localhost (this is the UI, would do another port for zeppelin)
-ssh -i ~/.ssh/first-ec2-key-pair.pem -N -L 8157:ec2-54-87-242-119.compute-1.amazonaws.com:8088 hadoop@ec2-54-87-242-119.compute-1.amazonaws.com
+ssh -i ~/.ssh/first-ec2-key-pair.pem -N -L 8157:ec2-35-175-249-148.compute-1.amazonaws.com:8088 hadoop@ec2-35-175-249-148.compute-1.amazonaws.com
 # Zeppelin
-ssh -i ~/.ssh/first-ec2-key-pair.pem -N -L 8170:ec2-54-87-242-119.compute-1.amazonaws.com:8890 hadoop@ec2-54-87-242-119.compute-1.amazonaws.com
+ssh -i ~/.ssh/first-ec2-key-pair.pem -N -L 8170:ec2-35-175-249-148.compute-1.amazonaws.com:8890 hadoop@ec2-35-175-249-148.compute-1.amazonaws.com
 
 # bootstrap actions to run installation when you spin up cluster
 # https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-bootstrap.html

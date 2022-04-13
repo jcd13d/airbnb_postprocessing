@@ -70,7 +70,7 @@ git clone git@github.com:jcd13d/airbnb_postprocessing.git
 # tunnel 8088 to 8157 on localhost (this is the UI, would do another port for zeppelin)
 ssh -i ~/.ssh/first-ec2-key-pair.pem -N -L 8157:ec2-35-175-249-148.compute-1.amazonaws.com:8088 hadoop@ec2-35-175-249-148.compute-1.amazonaws.com
 # Zeppelin
-ssh -i ~/.ssh/first-ec2-key-pair.pem -N -L 8170:ec2-35-175-249-148.compute-1.amazonaws.com:8890 hadoop@ec2-35-175-249-148.compute-1.amazonaws.com
+ssh -i ~/.ssh/first-ec2-key-pair.pem -N -L 8170:ec2-100-24-51-109.compute-1.amazonaws.com:8890 hadoop@ec2-100-24-51-109.compute-1.amazonaws.com
 
 # bootstrap actions to run installation when you spin up cluster
 # https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-bootstrap.html

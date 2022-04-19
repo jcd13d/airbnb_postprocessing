@@ -94,6 +94,6 @@ class PysparkPostProcessor(PostProcessor):
             self.data.write.partitionBy("parition_col").mode("overwrite").parquet(self.out_path)
 
     def clean_directories(self):
-        # [self.s3.rm(p, recursive=True) for p in self.dirs]
+        [self.s3.rm(p, recursive=True) for p in self.dirs]
         pass
 

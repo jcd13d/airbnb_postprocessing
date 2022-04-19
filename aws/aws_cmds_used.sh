@@ -88,3 +88,31 @@ ssh -i ~/.ssh/first-ec2-key-pair.pem -N -L 8170:ec2-100-24-51-109.compute-1.amaz
 # https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/launch-a-spark-job-in-a-transient-emr-cluster-using-a-lambda-function.html
 
 # s3://aws-logs-033046933810-us-east-1/elasticmapreduce/j-1JBF1GGNTOW1X/node/i-013d01409fa2450a0/bootstrap-actions/1/stderr.gz
+
+# LAMBDA STUFF
+aws emr create-default-roles
+zip ./build/function.zip ./aws/function.py
+zip ./function.zip ./function.py
+
+aws lambda create-function --function-name launch-postprocessor \
+--zip-file fileb://function.zip --handler function.handler --runtime python3.8 \
+--role arn:aws:iam::443188464014:role/lambda-emr-role --timeout 20
+
+./build/build.sh
+
+aws lambda update-function-configuration --function-name launch-postprocessor --handler aws.function.handler
+
+aws lambda update-function-code --function-name launch-postprocessor --zip-file fileb://function.zip
+
+aws lambda invoke --function-name launch-postprocessor --payload '{"test": "hello"}' aws/response.txt --cli-binary-format raw-in-base64-out
+
+aws s3api create-bucket --bucket airbnb-scraper-bucket-0-0-1
+aws s3 cp s3://airbnb-scraper-bucket-0.0.1/postprocessing_files/set_up_cluster.sh s3://airbnb-scraper-bucket-123123123/set_up_cluster.sh
+aws s3 cp s3://airbnb-scraper-bucket-0.0.1/postprocessing_files/set_up_cluster.sh s3://airbnb-scraper-bucket-testuseast1/set_up_cluster.sh
+aws s3 cp s3://airbnb-scraper-bucket-0.0.1/postprocessing_files/set_up_cluster.sh s3://bucket-airbnb-test-10.0.1/set_up_cluster.sh
+
+aws s3 cp s3://airbnb-scraper-bucket-0.0.1/ s3://airbnb-scraper-bucket-0-0-1/ --recursive
+
+aws events put-rule --name "weekly-postprocessor" --schedule-expression "cron(0 4 * * ? *)"
+aws events put-targets --rule "weekly-postprocessor" --cli-input-json file://aws/eventbridge_target.json
+

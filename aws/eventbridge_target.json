@@ -1,0 +1,9 @@
+{
+  "Rule": "",
+  "Targets": [
+    {
+      "Id": "weekly_postprocessor",
+      "Arn": "arn:aws:lambda:us-east-1:443188464014:function:launch-postprocessor"
+    }
+  ]
+}

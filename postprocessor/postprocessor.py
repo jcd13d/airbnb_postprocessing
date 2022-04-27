@@ -41,10 +41,13 @@ class PostProcessor:
 
     def run(self):
         self.read_data()
-        self.apply_partition_col()
-        self.postprocess_logic()
-        self.write_data()
-        self.clean_directories()
+        if self.data is None:
+            return False
+        else:
+            self.apply_partition_col()
+            self.postprocess_logic()
+            self.write_data()
+            self.clean_directories()
 
 
 class PandasPostProcessor(PostProcessor):
@@ -83,7 +86,11 @@ class PysparkPostProcessor(PostProcessor):
         pass
 
     def read_data(self):
-        self.data = self.spark.read.parquet(*self.dirs)
+        print(self.dirs)
+        if len(self.dirs) != 0:
+            self.data = self.spark.read.parquet(*self.dirs)
+        else:
+            self.data = None
 
     def write_data(self):
         print("\n\n\n\n", "WRITINGGGGGGG", "\n\n\n\n")

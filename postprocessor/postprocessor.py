@@ -1,4 +1,5 @@
 import s3fs
+import json
 # import fastparquet as fp
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
@@ -104,3 +105,22 @@ class PysparkPostProcessor(PostProcessor):
         [self.s3.rm(p, recursive=True) for p in self.dirs]
         pass
 
+class ListingIndexerPostProcessor(PysparkPostProcessor):
+    def __init__(self, data_loc, out_path, num_samples, seed, partition=[], num_partitions=20):
+        super().__init__(data_loc, out_path, partition, num_partitions)
+        self.num_samples = num_samples
+        self.seed = seed
+
+    def postprocess_logic(self):
+        if self.num_samples:
+            self.data = self.data.orderBy(F.rand(seed=self.seed)).limit(self.num_samples)
+        distinct_ids = [data[0] for data in self.data.select('id').distinct().collect()]
+        self.output = dict({"ids": distinct_ids})
+    
+    def write_data(self):
+        with self.s3.open(self.out_path, 'w') as outfile:
+            json.dump(self.output, outfile)
+    
+    def clean_directories(self):
+        # Don't need to clean indexer directories
+        pass

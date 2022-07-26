@@ -69,8 +69,21 @@ git clone git@github.com:jcd13d/airbnb_postprocessing.git
 
 # tunnel 8088 to 8157 on localhost (this is the UI, would do another port for zeppelin)
 ssh -i ~/.ssh/first-ec2-key-pair.pem -N -L 8157:ec2-35-175-249-148.compute-1.amazonaws.com:8088 hadoop@ec2-35-175-249-148.compute-1.amazonaws.com
+ssh -i ~/.ssh/btd_key_pair.pem -N -L 8157:hadoop@ec2-54-85-42-226.compute-1.amazonaws.com:8088 hadoop@ec2-54-85-42-226.compute-1.amazonaws.com
+hadoop@ec2-54-85-42-226.compute-1.amazonaws.com
 # Zeppelin
 ssh -i ~/.ssh/first-ec2-key-pair.pem -N -L 8170:ec2-100-24-51-109.compute-1.amazonaws.com:8890 hadoop@ec2-100-24-51-109.compute-1.amazonaws.com
+ssh -i ~/.ssh/btd_key_pair.pem -N -L 8157:hadoop@ec2-54-85-42-226.compute-1.amazonaws.com:8088 hadoop@ec2-54-85-42-226.compute-1.amazonaws.com
+ssh -i ~/.ssh/btd_key_pair.pem -N -L 8157:hadoop@ec2-44-200-28-195.compute-1.amazonaws.com:8890 hadoop@ec2-44-200-28-195.compute-1.amazonaws.com
+ec2-44-200-28-195.compute-1.amazonaws.com:8890/
+ssh -i ~/.ssh/btd_key_pair.pem -ND 8157 ec2-44-200-28-195.compute-1.amazonaws.com:8890
+ssh -i ~/.ssh/btd_key_pair.pem -N -L 8157:ec2-34-229-203-169.compute-1.amazonaws.com:8890 hadoop@ec2-34-229-203-169.compute-1.amazonaws.com:8890
+ec2-34-229-203-169.compute-1.amazonaws.com
+
+
+# FINALLY WORKED
+ssh -i ~/.ssh/btd_key_pair.pem -N -L 8157:ec2-34-229-203-169.compute-1.amazonaws.com:8088 hadoop@ec2-34-229-203-169.compute-1.amazonaws.com
+ssh -i ~/.ssh/btd_key_pair.pem -N -L 8157:ec2-34-229-203-169.compute-1.amazonaws.com:8890 hadoop@ec2-34-229-203-169.compute-1.amazonaws.com
 
 # bootstrap actions to run installation when you spin up cluster
 # https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-bootstrap.html
@@ -116,3 +129,11 @@ aws s3 cp s3://airbnb-scraper-bucket-0.0.1/ s3://airbnb-scraper-bucket-0-0-1/ --
 aws events put-rule --name "weekly-postprocessor" --schedule-expression "cron(0 4 * * ? *)"
 aws events put-targets --rule "weekly-postprocessor" --cli-input-json file://aws/eventbridge_target.json
 
+aws s3 cp ./temp_investigate.py s3://airbnb-scraper-bucket-0-0-1/postprocessing_files/test_delta.py
+aws s3 cp ./temp_investigate.py s3://airbnb-scraper-bucket-0-0-1/postprocessing_files/test_delta.py
+aws s3 cp ./investigate_reviews.py s3://airbnb-scraper-bucket-0-0-1/postprocessing_files/investigate_reviews.py
+
+spark-submit --packages io.delta:delta-core_2.12:2.0.0 s3://airbnb-scraper-bucket-0-0-1/postprocessing_files/test_delta.py
+spark-submit --packages io.delta:delta-core_2.12:2.0.0 s3://airbnb-scraper-bucket-0-0-1/postprocessing_files/investigate_reviews.py
+
+spark-submit --packages io.delta:delta-core_2.12:2.0.0 s3://airbnb-scraper-bucket-0-0-1/postprocessing_files/optimize_test.py

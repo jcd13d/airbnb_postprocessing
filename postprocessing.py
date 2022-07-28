@@ -18,25 +18,25 @@ if __name__ == "__main__":
 
     config = {
         "occupancy_postprocess": {
-            "data_loc": "s3://airbnb-scraper-bucket-0-0-1/data/occupancy_beta_20220418/",
-            "out_path": "s3://airbnb-scraper-bucket-0-0-1/data/occupancy_beta_20220418_postprocessed/"
+            "data_loc": "s3://airbnb-scraper-bucket-0-1-1/data/occupancy_beta_20220418/",
+            "out_path": "s3://airbnb-scraper-bucket-0-1-1/data/occupancy_beta_20220418_postprocessed/"
         },
         "price_postprocess": {
-            "data_loc": "s3://airbnb-scraper-bucket-0-0-1/data/price_beta_20220418/",
-            "out_path": "s3://airbnb-scraper-bucket-0-0-1/data/price_beta_20220418_postprocessed/"
+            "data_loc": "s3://airbnb-scraper-bucket-0-1-1/data/price_beta_20220418/",
+            "out_path": "s3://airbnb-scraper-bucket-0-1-1/data/price_beta_20220418_postprocessed/"
         },
         "review_postprocess": {
-            "data_loc": "s3://airbnb-scraper-bucket-0-0-1/data/review_beta_20220721/",
-            "out_path": "s3://airbnb-scraper-bucket-0-0-1/data/review_beta_20220721_postprocessed/",
+            "data_loc": "s3://airbnb-scraper-bucket-0-1-1/data/review_beta_20220721/",
+            "out_path": "s3://airbnb-scraper-bucket-0-1-1/data/review_beta_20220721_postprocessed/",
             "write_type": "delta"
         },
         "price_metadata_postprocess": {
-            "data_loc": "s3://airbnb-scraper-bucket-0-0-1/data/price_beta_metadata/",
-            "out_path": "s3://airbnb-scraper-bucket-0-0-1/data/price_beta_metadata_postprocessed/"
+            "data_loc": "s3://airbnb-scraper-bucket-0-1-1/data/price_beta_metadata/",
+            "out_path": "s3://airbnb-scraper-bucket-0-1-1/data/price_beta_metadata_postprocessed/"
         },
         "occupancy_metadata_postprocess": {
-            "data_loc": "s3://airbnb-scraper-bucket-0-0-1/data/occupancy_beta_metadata/",
-            "out_path": "s3://airbnb-scraper-bucket-0-0-1/data/occupancy_beta_metadata_postprocessed/"
+            "data_loc": "s3://airbnb-scraper-bucket-0-1-1/data/occupancy_beta_metadata/",
+            "out_path": "s3://airbnb-scraper-bucket-0-1-1/data/occupancy_beta_metadata_postprocessed/"
 
         }
     }

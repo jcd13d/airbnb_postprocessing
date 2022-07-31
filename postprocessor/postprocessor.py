@@ -72,10 +72,10 @@ class PandasPostProcessor(PostProcessor):
 
 
 class PysparkPostProcessor(PostProcessor):
-    def __init__(self, data_loc, out_path, partition=[], num_partitions=20, write_type="parquet"):
+    def __init__(self, data_loc, out_path, partition=[], num_partitions=20, write_type="parquet", dir_level=2):
         super(PysparkPostProcessor, self).__init__(data_loc, out_path, partition, num_partitions)
         self.write_type = write_type
-        self.dirs = recursive_list_dir(self.s3, [self.data_loc], 2)
+        self.dirs = recursive_list_dir(self.s3, [self.data_loc], dir_level)
         # self.spark = SparkSession.builder.appName("processor").getOrCreate()
         builder = pyspark.sql.SparkSession.builder.appName("Post Processor") \
             .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \

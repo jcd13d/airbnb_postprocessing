@@ -5,6 +5,7 @@ def main(config):
     pp_price = PysparkPostProcessor(**config['price_postprocess']).run()
     pp_occ = PysparkPostProcessor(**config['occupancy_postprocess']).run()
     pp_review = PysparkPostProcessor(**config['review_postprocess']).run()
+    # pp_review = PysparkPostProcessor(**config['listings_postprocess']).run()
 
     # TODO need to not depend on ID column for these
     # pp_price_meta = PysparkPostProcessor(**config['price_metadata_postprocess']).run()

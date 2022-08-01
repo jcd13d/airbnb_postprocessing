@@ -13,7 +13,7 @@ class ListingsPostprocessor(PysparkPostProcessor):
         # self.data = self.data.withColumn("filename", ))
         self.data = self.data.withColumn("config_name", F.split(input_file_name(), "/").getItem(5))
         self.data = self.data.withColumn("process_date", F.lit(self.run_time))
-        self.data.groupBy("config_name").count().show()
+        # self.data.groupBy("config_name").count().show()
 
         self.data.show()
 

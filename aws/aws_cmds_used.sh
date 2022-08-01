@@ -139,3 +139,4 @@ spark-submit --packages io.delta:delta-core_2.12:2.0.0 s3://airbnb-scraper-bucke
 spark-submit --packages io.delta:delta-core_2.12:2.0.0 s3://airbnb-scraper-bucket-0-0-1/postprocessing_files/optimize_test.py
 spark-submit --packages io.delta:delta-core_2.12:2.0.0 --py-files s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/dependencies.zip s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/postprocessing.py
 spark-submit --packages io.delta:delta-core_2.12:2.0.0 --py-files s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/dependencies.zip s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/listings_postprocessor.py
+spark-submit --packages io.delta:delta-core_2.12:2.0.0 --py-files s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/dependencies.zip s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/unique_ids.py

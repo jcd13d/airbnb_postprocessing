@@ -77,8 +77,10 @@ ssh -i ~/.ssh/btd_key_pair.pem -N -L 8157:hadoop@ec2-54-85-42-226.compute-1.amaz
 ssh -i ~/.ssh/btd_key_pair.pem -N -L 8157:hadoop@ec2-44-200-28-195.compute-1.amazonaws.com:8890 hadoop@ec2-44-200-28-195.compute-1.amazonaws.com
 ec2-44-200-28-195.compute-1.amazonaws.com:8890/
 ssh -i ~/.ssh/btd_key_pair.pem -ND 8157 ec2-44-200-28-195.compute-1.amazonaws.com:8890
-ssh -i ~/.ssh/btd_key_pair.pem -N -L 8157:ec2-34-229-203-169.compute-1.amazonaws.com:8890 hadoop@ec2-34-229-203-169.compute-1.amazonaws.com:8890
+ssh -i ~/.ssh/btd_key_pair.pem -N -L 8157:ec2-54-197-33-188.compute-1.amazonaws.com:8890 hadoop@ec2-54-197-33-188.compute-1.amazonaws.com
 ec2-34-229-203-169.compute-1.amazonaws.com
+ec2-54-197-33-188.compute-1.amazonaws.com
+ec2-54-197-33-188.compute-1.amazonaws.com
 
 
 # FINALLY WORKED

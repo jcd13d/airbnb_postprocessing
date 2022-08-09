@@ -20,15 +20,15 @@ if __name__ == "__main__":
     config = {
         "occupancy_postprocess": {
             "data_loc": "s3://airbnb-scraper-bucket-0-1-1/data/occupancy_beta_20220418/",
-            "out_path": "s3://airbnb-scraper-bucket-0-1-1/data/occupancy_beta_20220418_postprocessed/"
+            "out_path": "s3://airbnb-scraper-bucket-0-1-1/data/occupancy_beta_20220809_postprocessed/"
         },
         "price_postprocess": {
             "data_loc": "s3://airbnb-scraper-bucket-0-1-1/data/price_beta_20220418/",
-            "out_path": "s3://airbnb-scraper-bucket-0-1-1/data/price_beta_20220418_postprocessed/"
+            "out_path": "s3://airbnb-scraper-bucket-0-1-1/data/price_beta_20220809_postprocessed/"
         },
         "review_postprocess": {
             "data_loc": "s3://airbnb-scraper-bucket-0-1-1/data/review_beta_20220721/",
-            "out_path": "s3://airbnb-scraper-bucket-0-1-1/data/review_beta_20220721_postprocessed/",
+            "out_path": "s3://airbnb-scraper-bucket-0-1-1/data/review_beta_20220809_postprocessed/",
             "write_type": "delta"
         },
         "price_metadata_postprocess": {

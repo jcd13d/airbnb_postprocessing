@@ -87,6 +87,11 @@ class PysparkPostProcessor(PostProcessor):
 
     def postprocess_logic(self):
         self.data.show()
+        # date_format = "%Y%m%d%H%M%S"
+        date_format = "yyyyMMddTkkmmss"
+        self.data = self.data.withColumnRenamed("trigger_time", "trigger_time_temp")
+        self.data = self.data.withColumn("trigger_time", F.to_timestamp(F.col("trigger_time"), date_format))
+        self.data.drop("trigger_time_temp")
         print("\n\n\n", self.data.count(), "\n\n\n")
         pass
 

@@ -87,6 +87,10 @@ ec2-54-197-33-188.compute-1.amazonaws.com
 ssh -i ~/.ssh/btd_key_pair.pem -N -L 8157:ec2-34-229-203-169.compute-1.amazonaws.com:8088 hadoop@ec2-34-229-203-169.compute-1.amazonaws.com
 ssh -i ~/.ssh/btd_key_pair.pem -N -L 8157:ec2-34-229-203-169.compute-1.amazonaws.com:8890 hadoop@ec2-34-229-203-169.compute-1.amazonaws.com
 
+ssh -i ~/.ssh/btd_key_pair.pem -N -L 8157:ec2-54-158-20-37.compute-1.amazonaws.com:8890 hadoop@ec2-54-158-20-37.compute-1.amazonaws.com
+ssh -i ~/.ssh/btd_key_pair.pem -N -L 8158:ec2-54-158-20-37.compute-1.amazonaws.com:8088 hadoop@ec2-54-158-20-37.compute-1.amazonaws.com
+ec2-54-83-89-215.compute-1.amazonaws.com
+ssh -i ~/btd_key_pair.pem hadoop@ec2-54-158-20-37.compute-1.amazonaws.com
 # bootstrap actions to run installation when you spin up cluster
 # https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-bootstrap.html
 

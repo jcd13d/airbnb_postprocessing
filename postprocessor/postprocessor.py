@@ -2,6 +2,7 @@ import pyspark.sql.utils
 import s3fs
 from delta import *
 from pyspark.sql import functions as F
+from pyspark.sql.types import IntegerType
 
 
 def recursive_list_dir(fs, dirs, levels=1, prepend="s3://"):
@@ -16,13 +17,14 @@ def recursive_list_dir(fs, dirs, levels=1, prepend="s3://"):
 
 
 class PostProcessor:
-    def __init__(self, data_loc, out_path, partition=[], num_partitions=20):
+    def __init__(self, data_loc, out_path, partition=[], num_partitions=20, schema=None):
         self.data = None
         self.data_loc = data_loc
         self.partition = partition
         self.out_path = out_path
         self.s3 = s3fs.S3FileSystem()
         self.num_partitions = num_partitions
+        self.schema = schema
 
     def apply_partition_col(self):
         pass
@@ -46,34 +48,15 @@ class PostProcessor:
         else:
             self.apply_partition_col()
             self.postprocess_logic()
+            self.data.printSchema()
+            self.data.show()
             self.write_data()
             self.clean_directories()
 
 
-class PandasPostProcessor(PostProcessor):
-    def __init__(self, data_loc, out_path, partition=[], num_partitions=20):
-       super(PandasPostProcessor, self).__init__(data_loc, out_path, partition, num_partitions)
-
-    def apply_partition_col(self):
-        self.data['partition_col'] = self.data['id'] % self.num_partitions
-        pass
-
-    def postprocess_logic(self):
-        pass
-
-    def read_data(self):
-        self.data = fp.ParquetFile(self.data_loc, open_with=self.s3.open).to_pandas()
-
-    def write_data(self):
-        if self.s3.exists(self.out_path):
-            fp.write(self.out_path, self.data, file_scheme='hive', partition_on=self.partition, append=True, open_with=self.s3.open)
-        else:
-            fp.write(self.out_path, self.data, file_scheme='hive', partition_on=self.partition, append=False, open_with=self.s3.open)
-
-
 class PysparkPostProcessor(PostProcessor):
-    def __init__(self, data_loc, out_path, partition=[], num_partitions=20, write_type="parquet", dir_level=2):
-        super(PysparkPostProcessor, self).__init__(data_loc, out_path, partition, num_partitions)
+    def __init__(self, data_loc, out_path, partition=[], num_partitions=20, write_type="parquet", dir_level=2, schema=None):
+        super(PysparkPostProcessor, self).__init__(data_loc, out_path, partition, num_partitions, schema)
         self.write_type = write_type
         self.dirs = recursive_list_dir(self.s3, [self.data_loc], dir_level)
         # self.spark = SparkSession.builder.appName("processor").getOrCreate()
@@ -83,17 +66,27 @@ class PysparkPostProcessor(PostProcessor):
         self.spark = configure_spark_with_delta_pip(builder).getOrCreate()
 
     def apply_partition_col(self):
-        self.data = self.data.withColumn("parition_col", F.col("id") % self.num_partitions)
+        self.data = self.data.withColumn("parition_col", (F.col("id") % self.num_partitions).cast(IntegerType()))
+
+    def to_datetime_wrapper(self, col, format_):
+        self.data = self.data.withColumnRenamed(col, "temp")
+        self.data = self.data.withColumn(col, F.to_timestamp(F.col("temp"), format_))
+        self.data = self.data.drop("temp")
+        self.reset_col_order()
+
+    def reset_col_order(self):
+        if self.schema:
+            self.data = self.data.select(self.schema)
 
     def postprocess_logic(self):
         self.data.show()
+
         # date_format = "%Y%m%d%H%M%S"
-        date_format = "yyyyMMddTkkmmss"
-        self.data = self.data.withColumnRenamed("trigger_time", "trigger_time_temp")
-        self.data = self.data.withColumn("trigger_time", F.to_timestamp(F.col("trigger_time"), date_format))
-        self.data.drop("trigger_time_temp")
+        date_format = "yyyyMMdd'T'kkmmss"
+        self.to_datetime_wrapper("trigger_time", date_format)
+        self.to_datetime_wrapper("pulled", date_format)
+
         print("\n\n\n", self.data.count(), "\n\n\n")
-        pass
 
     def read_data(self):
         print(self.dirs)

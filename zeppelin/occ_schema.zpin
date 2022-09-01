@@ -1,0 +1,1829 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-10T20:08:25+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660162100279_1069262571",
+      "id": "paragraph_1660162100279_1069262571",
+      "dateCreated": "2022-08-10T20:08:20+0000",
+      "dateStarted": "2022-08-10T20:08:25+0000",
+      "dateFinished": "2022-08-10T20:08:59+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:8960"
+    },
+    {
+      "text": "%pyspark\n# GOAL merge OCCUPANCY to one master table\nocc_001_path = \"s3://airbnb-scraper-bucket-0-0-1/data/occupancy_beta_20220418_postprocessed/\"\nocc_011_path = \"s3://airbnb-scraper-bucket-0-1-1/data/occupancy_beta_20220418_postprocessed/\"\nocc_new_path = \"s3://airbnb-scraper-bucket-0-1-1/data/prod_data_tables/occupancy/20220809_postprocessed/\"\nocc_001_fix_path = \"s3://airbnb-scraper-bucket-0-1-1/data/sandbox/fixed_table/\"\nocc_001_df = spark.read.parquet(occ_001_path)\nocc_011_df = spark.read.parquet(occ_011_path)\nocc_new_df = spark.read.parquet(occ_new_path)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-10T21:19:55+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=17",
+              "$$hashKey": "object:9281"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=18",
+              "$$hashKey": "object:9282"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=19",
+              "$$hashKey": "object:9283"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=20",
+              "$$hashKey": "object:9284"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660162105270_505659591",
+      "id": "paragraph_1660162105270_505659591",
+      "dateCreated": "2022-08-10T20:08:25+0000",
+      "dateStarted": "2022-08-10T21:19:55+0000",
+      "dateFinished": "2022-08-10T21:20:07+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8961"
+    },
+    {
+      "text": "%pyspark\nocc_001_fix_df = spark.read.parquet(occ_001_fix_path)\nocc_001_fix_df.show\nocc_001_df = occ_001_fix_df",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-10T21:20:33+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=23",
+              "$$hashKey": "object:9302"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660163381897_1372900460",
+      "id": "paragraph_1660163381897_1372900460",
+      "dateCreated": "2022-08-10T20:29:41+0000",
+      "dateStarted": "2022-08-10T21:20:33+0000",
+      "dateFinished": "2022-08-10T21:20:35+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8962"
+    },
+    {
+      "text": "%pyspark\nocc_001_df.printSchema()\n#print(occ_001_df.count())\nocc_001_df.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-10T21:20:48+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- index: long (nullable = true)\n |-- date: string (nullable = true)\n |-- available: boolean (nullable = true)\n |-- max_nights: long (nullable = true)\n |-- min_nights: long (nullable = true)\n |-- available_for_checkin: boolean (nullable = true)\n |-- available_for_checkout: boolean (nullable = true)\n |-- bookable: boolean (nullable = true)\n |-- pulled: string (nullable = true)\n |-- id: long (nullable = true)\n\n+-----+----------+---------+----------+----------+---------------------+----------------------+--------+-------------------+--------+\n|index|      date|available|max_nights|min_nights|available_for_checkin|available_for_checkout|bookable|             pulled|      id|\n+-----+----------+---------+----------+----------+---------------------+----------------------+--------+-------------------+--------+\n|    0|2022-04-01|    false|        15|         3|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|    1|2022-04-02|    false|        15|         3|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|    2|2022-04-03|    false|        15|         3|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|    3|2022-04-04|    false|        15|         1|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|    4|2022-04-05|    false|        15|         1|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|    5|2022-04-06|    false|        15|         1|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|    6|2022-04-07|    false|        15|         1|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|    7|2022-04-08|    false|        15|         3|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|    8|2022-04-09|    false|        15|         2|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|    9|2022-04-10|    false|        15|         2|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|   10|2022-04-11|    false|        15|         1|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|   11|2022-04-12|    false|        15|         1|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|   12|2022-04-13|    false|        15|         1|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|   13|2022-04-14|    false|        15|         1|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|   14|2022-04-15|    false|        15|         3|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|   15|2022-04-16|    false|        15|         1|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|   16|2022-04-17|    false|        15|         1|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|   17|2022-04-18|    false|        15|         1|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|   18|2022-04-19|    false|        15|         1|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n|   19|2022-04-20|    false|        15|         1|                false|                 false|   false|28/04/2022 20:05:08|44064152|\n+-----+----------+---------+----------+----------+---------------------+----------------------+--------+-------------------+--------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=24",
+              "$$hashKey": "object:9319"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660162178204_1400412878",
+      "id": "paragraph_1660162178204_1400412878",
+      "dateCreated": "2022-08-10T20:09:38+0000",
+      "dateStarted": "2022-08-10T21:20:48+0000",
+      "dateFinished": "2022-08-10T21:20:49+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8963"
+    },
+    {
+      "text": "%pyspark\nocc_011_df.printSchema()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-10T21:21:08+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- index: long (nullable = true)\n |-- date: string (nullable = true)\n |-- available: boolean (nullable = true)\n |-- max_nights: long (nullable = true)\n |-- min_nights: long (nullable = true)\n |-- available_for_checkin: boolean (nullable = true)\n |-- available_for_checkout: boolean (nullable = true)\n |-- bookable: boolean (nullable = true)\n |-- pulled: string (nullable = true)\n |-- id: long (nullable = true)\n |-- parition_col: integer (nullable = true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660162294057_471965498",
+      "id": "paragraph_1660162294057_471965498",
+      "dateCreated": "2022-08-10T20:11:34+0000",
+      "dateStarted": "2022-08-10T21:21:08+0000",
+      "dateFinished": "2022-08-10T21:21:08+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8964"
+    },
+    {
+      "text": "%pyspark\n# 001 has double id needs to be long, partition_col needs to be int, add parition_col\nfrom pyspark.sql.types import LongType, IntegerType\nimport pyspark.sql.functions as F\nocc_001_df = occ_001_df.withColumnRenamed(\"id\", \"temp\")\nocc_001_df = occ_001_df.withColumn(\"id\", F.col(\"temp\").cast(LongType()))\nocc_001_df = occ_001_df.drop(\"temp\")\n\nocc_001_df = occ_001_df.withColumn(\"parition_col\", F.col(\"id\") % 20)\n\nocc_001_df = occ_001_df.withColumnRenamed(\"parition_col\", \"temp\")\nocc_001_df = occ_001_df.withColumn(\"parition_col\", F.col(\"temp\").cast(IntegerType()))\nocc_001_df = occ_001_df.drop(\"temp\")\n\nocc_001_df.printSchema()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-10T21:34:32+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- index: long (nullable = true)\n |-- date: string (nullable = true)\n |-- available: boolean (nullable = true)\n |-- max_nights: long (nullable = true)\n |-- min_nights: long (nullable = true)\n |-- available_for_checkin: boolean (nullable = true)\n |-- available_for_checkout: boolean (nullable = true)\n |-- bookable: boolean (nullable = true)\n |-- pulled: string (nullable = true)\n |-- id: long (nullable = true)\n |-- parition_col: integer (nullable = true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660162298575_185204128",
+      "id": "paragraph_1660162298575_185204128",
+      "dateCreated": "2022-08-10T20:11:38+0000",
+      "dateStarted": "2022-08-10T21:34:32+0000",
+      "dateFinished": "2022-08-10T21:34:32+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8965"
+    },
+    {
+      "text": "%pyspark\nocc_011_df.printSchema()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-10T21:34:34+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- index: long (nullable = true)\n |-- date: string (nullable = true)\n |-- available: boolean (nullable = true)\n |-- max_nights: long (nullable = true)\n |-- min_nights: long (nullable = true)\n |-- available_for_checkin: boolean (nullable = true)\n |-- available_for_checkout: boolean (nullable = true)\n |-- bookable: boolean (nullable = true)\n |-- pulled: string (nullable = true)\n |-- id: long (nullable = true)\n |-- parition_col: integer (nullable = true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660166776958_444665841",
+      "id": "paragraph_1660166776958_444665841",
+      "dateCreated": "2022-08-10T21:26:16+0000",
+      "dateStarted": "2022-08-10T21:34:34+0000",
+      "dateFinished": "2022-08-10T21:34:34+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8966"
+    },
+    {
+      "text": "%pyspark\n# looks good, concat\nocc_old = occ_001_df.union(occ_011_df)\nocc_old.printSchema()\n# occ_old.count() # works \n",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-10T21:34:44+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- index: long (nullable = true)\n |-- date: string (nullable = true)\n |-- available: boolean (nullable = true)\n |-- max_nights: long (nullable = true)\n |-- min_nights: long (nullable = true)\n |-- available_for_checkin: boolean (nullable = true)\n |-- available_for_checkout: boolean (nullable = true)\n |-- bookable: boolean (nullable = true)\n |-- pulled: string (nullable = true)\n |-- id: long (nullable = true)\n |-- parition_col: integer (nullable = true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660162473608_1418044987",
+      "id": "paragraph_1660162473608_1418044987",
+      "dateCreated": "2022-08-10T20:14:33+0000",
+      "dateStarted": "2022-08-10T21:34:44+0000",
+      "dateFinished": "2022-08-10T21:34:44+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8967"
+    },
+    {
+      "text": "%pyspark\nocc_new_df.printSchema()\n#occ_new_df.show()\norder = occ_new_df.columns",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-10T21:41:30+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- index: long (nullable = true)\n |-- date: string (nullable = true)\n |-- available: boolean (nullable = true)\n |-- max_nights: long (nullable = true)\n |-- min_nights: long (nullable = true)\n |-- available_for_checkin: boolean (nullable = true)\n |-- available_for_checkout: boolean (nullable = true)\n |-- bookable: boolean (nullable = true)\n |-- id: long (nullable = true)\n |-- trigger_time: timestamp (nullable = true)\n |-- pulled: timestamp (nullable = true)\n |-- parition_col: integer (nullable = true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660162758058_266915264",
+      "id": "paragraph_1660162758058_266915264",
+      "dateCreated": "2022-08-10T20:19:18+0000",
+      "dateStarted": "2022-08-10T21:41:30+0000",
+      "dateFinished": "2022-08-10T21:41:30+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8968"
+    },
+    {
+      "text": "%pyspark\n# need to add trigger time col, will use truncated pulled time to day\n# need to add trigger time and convert pulled to timestamp\nocc_old_fix = occ_old.withColumnRenamed(\"pulled\", \"temp\")\nocc_old_fix = occ_old_fix.withColumn(\"pulled\", F.to_timestamp(F.col(\"temp\"), \"dd'/'MM'/'yyyy kk':'mm':'ss\"))\nocc_old_fix = occ_old_fix.drop(\"temp\")\n\nocc_old_fix = occ_old_fix.withColumn(\"trigger_time\", F.date_trunc(\"day\", F.col(\"pulled\")))\nocc_old_fix = occ_old_fix.select(order)\n\n#occ_old_fix.show()\nocc_old_fix.printSchema()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-10T21:41:50+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- index: long (nullable = true)\n |-- date: string (nullable = true)\n |-- available: boolean (nullable = true)\n |-- max_nights: long (nullable = true)\n |-- min_nights: long (nullable = true)\n |-- available_for_checkin: boolean (nullable = true)\n |-- available_for_checkout: boolean (nullable = true)\n |-- bookable: boolean (nullable = true)\n |-- id: long (nullable = true)\n |-- trigger_time: timestamp (nullable = true)\n |-- pulled: timestamp (nullable = true)\n |-- parition_col: integer (nullable = true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660163012361_388434677",
+      "id": "paragraph_1660163012361_388434677",
+      "dateCreated": "2022-08-10T20:23:32+0000",
+      "dateStarted": "2022-08-10T21:41:50+0000",
+      "dateFinished": "2022-08-10T21:41:50+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8969"
+    },
+    {
+      "text": "%pyspark\nfinal_df = occ_old_fix.union(occ_new_df)\nfinal_df.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-10T21:41:55+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----+----------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\n|index|      date|available|max_nights|min_nights|available_for_checkin|available_for_checkout|bookable|      id|       trigger_time|             pulled|parition_col|\n+-----+----------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\n|    0|2022-04-01|    false|        15|         3|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|    1|2022-04-02|    false|        15|         3|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|    2|2022-04-03|    false|        15|         3|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|    3|2022-04-04|    false|        15|         1|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|    4|2022-04-05|    false|        15|         1|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|    5|2022-04-06|    false|        15|         1|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|    6|2022-04-07|    false|        15|         1|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|    7|2022-04-08|    false|        15|         3|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|    8|2022-04-09|    false|        15|         2|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|    9|2022-04-10|    false|        15|         2|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|   10|2022-04-11|    false|        15|         1|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|   11|2022-04-12|    false|        15|         1|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|   12|2022-04-13|    false|        15|         1|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|   13|2022-04-14|    false|        15|         1|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|   14|2022-04-15|    false|        15|         3|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|   15|2022-04-16|    false|        15|         1|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|   16|2022-04-17|    false|        15|         1|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|   17|2022-04-18|    false|        15|         1|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|   18|2022-04-19|    false|        15|         1|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n|   19|2022-04-20|    false|        15|         1|                false|                 false|   false|44064152|2022-04-28 00:00:00|2022-04-28 20:05:08|          12|\n+-----+----------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=36",
+              "$$hashKey": "object:9420"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660167435429_1630743746",
+      "id": "paragraph_1660167435429_1630743746",
+      "dateCreated": "2022-08-10T21:37:15+0000",
+      "dateStarted": "2022-08-10T21:41:56+0000",
+      "dateFinished": "2022-08-10T21:42:04+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8970"
+    },
+    {
+      "text": "%pyspark\nfinal_table_location = \"s3://airbnb-scraper-bucket-0-1-1/data/backup/occupancy_20220810/\"",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-10T21:43:03+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660167579407_1347766929",
+      "id": "paragraph_1660167579407_1347766929",
+      "dateCreated": "2022-08-10T21:39:39+0000",
+      "dateStarted": "2022-08-10T21:43:03+0000",
+      "dateFinished": "2022-08-10T21:43:03+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8971"
+    },
+    {
+      "text": "%pyspark\nfinal_df.write.mode(\"overwrite\").parquet(final_table_location)",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-10T21:43:29+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=37",
+              "$$hashKey": "object:9441"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660167783101_176903966",
+      "id": "paragraph_1660167783101_176903966",
+      "dateCreated": "2022-08-10T21:43:03+0000",
+      "dateStarted": "2022-08-10T21:43:29+0000",
+      "dateFinished": "2022-08-10T21:50:14+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8972"
+    },
+    {
+      "text": "%pyspark\ntest_df = spark.read.parquet(final_table_location)\ntest_df.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-10T21:43:51+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----+----------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\n|index|      date|available|max_nights|min_nights|available_for_checkin|available_for_checkout|bookable|      id|       trigger_time|             pulled|parition_col|\n+-----+----------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\n|    0|2022-08-01|    false|      1125|         1|                false|                 false|   false|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|    1|2022-08-02|    false|      1125|         1|                false|                 false|   false|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|    2|2022-08-03|    false|      1125|         1|                false|                 false|   false|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|    3|2022-08-04|    false|      1125|         1|                false|                 false|   false|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|    4|2022-08-05|    false|      1125|         1|                false|                 false|   false|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|    5|2022-08-06|    false|      1125|         1|                false|                 false|   false|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|    6|2022-08-07|     true|      1125|         1|                 true|                 false|    true|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|    7|2022-08-08|     true|      1125|         1|                 true|                  true|    true|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|    8|2022-08-09|     true|      1125|         1|                 true|                  true|    true|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|    9|2022-08-10|     true|      1125|         1|                 true|                  true|    true|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|   10|2022-08-11|    false|      1125|         1|                false|                  true|   false|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|   11|2022-08-12|    false|      1125|         1|                false|                 false|   false|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|   12|2022-08-13|    false|      1125|         1|                false|                 false|   false|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|   13|2022-08-14|    false|      1125|         1|                false|                 false|   false|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|   14|2022-08-15|     true|      1125|         1|                 true|                 false|    true|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|   15|2022-08-16|     true|      1125|         1|                 true|                  true|    true|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|   16|2022-08-17|     true|      1125|         1|                 true|                  true|    true|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|   17|2022-08-18|     true|      1125|         1|                 true|                  true|    true|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|   18|2022-08-19|     true|      1125|         1|                 true|                  true|    true|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n|   19|2022-08-20|     true|      1125|         1|                 true|                  true|    true|47715467|2022-08-02 00:00:00|2022-08-02 06:21:45|           7|\n+-----+----------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=38",
+              "$$hashKey": "object:9458"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=39",
+              "$$hashKey": "object:9459"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660167809896_1199643638",
+      "id": "paragraph_1660167809896_1199643638",
+      "dateCreated": "2022-08-10T21:43:29+0000",
+      "dateStarted": "2022-08-10T21:43:51+0000",
+      "dateFinished": "2022-08-10T21:50:14+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8973"
+    },
+    {
+      "text": "%pyspark\ntest_df.groupby(\"pulled\").count().show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-10T21:55:05+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------------+-----+\n|             pulled|count|\n+-------------------+-----+\n|2022-08-01 06:21:50|70080|\n|2022-06-11 06:45:54| 3285|\n|2022-05-19 06:22:06|14600|\n|2022-05-01 06:22:33| 3650|\n|2022-05-30 06:46:11| 6205|\n|2022-06-01 06:47:38| 2920|\n|2022-05-09 06:42:58| 5475|\n|2022-05-16 07:10:21| 4380|\n|2022-06-07 07:04:34| 1095|\n|2022-05-28 06:22:02|16060|\n|2022-06-12 06:43:29| 2920|\n|2022-05-20 06:46:22| 2920|\n|2022-05-11 06:43:57| 6205|\n|2022-04-30 06:47:26| 3650|\n|2022-04-20 06:21:46|22995|\n|2022-05-27 07:08:28| 7300|\n|2022-05-22 07:07:21| 5475|\n|2022-05-25 06:48:11| 1460|\n|2022-05-09 06:22:24| 2920|\n|2022-05-13 06:21:40|17885|\n+-------------------+-----+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=40",
+              "$$hashKey": "object:9478"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=41",
+              "$$hashKey": "object:9479"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660167831561_846378854",
+      "id": "paragraph_1660167831561_846378854",
+      "dateCreated": "2022-08-10T21:43:51+0000",
+      "dateStarted": "2022-08-10T21:55:05+0000",
+      "dateFinished": "2022-08-10T21:55:26+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8974"
+    },
+    {
+      "text": "%pyspark\nactive_table_location = \"s3://airbnb-scraper-bucket-0-1-1/data/prod_data_tables/occupancy/20220809_postprocessed/\"\nactive_df = spark.read.parquet(active_table_location)\nactive_df.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-10T21:57:01+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----+----------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\n|index|      date|available|max_nights|min_nights|available_for_checkin|available_for_checkout|bookable|      id|       trigger_time|             pulled|parition_col|\n+-----+----------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\n|    0|2022-08-01|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|    1|2022-08-02|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|    2|2022-08-03|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|    3|2022-08-04|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|    4|2022-08-05|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|    5|2022-08-06|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|    6|2022-08-07|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|    7|2022-08-08|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|    8|2022-08-09|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|    9|2022-08-10|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|   10|2022-08-11|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|   11|2022-08-12|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|   12|2022-08-13|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|   13|2022-08-14|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|   14|2022-08-15|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|   15|2022-08-16|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|   16|2022-08-17|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|   17|2022-08-18|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|   18|2022-08-19|    false|      1125|         1|                false|                 false|   false|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n|   19|2022-08-20|     true|      1125|         2|                 true|                 false|    true|50679714|2022-08-10 06:20:40|2022-08-10 06:21:51|          14|\n+-----+----------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=42",
+              "$$hashKey": "object:9498"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=43",
+              "$$hashKey": "object:9499"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660168500865_1042079572",
+      "id": "paragraph_1660168500865_1042079572",
+      "dateCreated": "2022-08-10T21:55:00+0000",
+      "dateStarted": "2022-08-10T21:57:01+0000",
+      "dateFinished": "2022-08-10T21:57:10+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8975"
+    },
+    {
+      "text": "%pyspark\ncomplete_df = active_df.union(test_df)\ncomplete_df.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-11T00:58:58+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Py4JJavaError: An error occurred while calling o1505.showString.\n: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 168.0 failed 4 times, most recent failure: Lost task 0.3 in stage 168.0 (TID 2887) (ip-172-31-25-7.ec2.internal executor 40): org.apache.spark.sql.execution.datasources.FileDownloadException: Failed to download file path: s3://airbnb-scraper-bucket-0-1-1/data/prod_data_tables/occupancy/20220809_postprocessed/parition_col=14/part-00001-ca416466-47ee-4f98-abed-78ab7ce0cd64.c000.snappy.parquet, range: 0-37915, partition values: [14], isDataPresent: false, eTag: 6f95e63d5853f5584dcbc2aee3678cd2-1\n\tat org.apache.spark.sql.execution.datasources.AsyncFileDownloader.next(AsyncFileDownloader.scala:142)\n\tat org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.getNextFile(FileScanRDD.scala:314)\n\tat org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.nextIterator(FileScanRDD.scala:229)\n\tat org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:189)\n\tat org.apache.spark.sql.execution.FileSourceScanExec$$anon$1.hasNext(DataSourceScanExec.scala:661)\n\tat org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.columnartorow_nextBatch_0$(Unknown Source)\n\tat org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.processNext(Unknown Source)\n\tat org.apache.spark.sql.execution.BufferedRowIterator.hasNext(BufferedRowIterator.java:35)\n\tat org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.hasNext(Unknown Source)\n\tat org.apache.spark.sql.execution.WholeStageCodegenExec$$anon$1.hasNext(WholeStageCodegenExec.scala:954)\n\tat org.apache.spark.sql.execution.SparkPlan.$anonfun$getByteArrayRdd$1(SparkPlan.scala:369)\n\tat org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2(RDD.scala:898)\n\tat org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2$adapted(RDD.scala:898)\n\tat org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)\n\tat org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:373)\n\tat org.apache.spark.rdd.RDD.iterator(RDD.scala:337)\n\tat org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)\n\tat org.apache.spark.scheduler.Task.run(Task.scala:133)\n\tat org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:506)\n\tat org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1474)\n\tat org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:509)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:750)\nCaused by: java.io.FileNotFoundException: No such file or directory 's3://airbnb-scraper-bucket-0-1-1/data/prod_data_tables/occupancy/20220809_postprocessed/parition_col=14/part-00001-ca416466-47ee-4f98-abed-78ab7ce0cd64.c000.snappy.parquet'\n\tat com.amazon.ws.emr.hadoop.fs.s3n.S3NativeFileSystem.getFileStatus(S3NativeFileSystem.java:521)\n\tat com.amazon.ws.emr.hadoop.fs.EmrFileSystem.getFileStatus(EmrFileSystem.java:613)\n\tat org.apache.parquet.hadoop.util.HadoopInputFile.fromPath(HadoopInputFile.java:61)\n\tat org.apache.spark.sql.execution.datasources.parquet.ParquetFooterReader.readFooter(ParquetFooterReader.java:39)\n\tat org.apache.spark.sql.execution.datasources.parquet.ParquetFileFormat.$anonfun$buildPrefetcherWithPartitionValues$1(ParquetFileFormat.scala:538)\n\tat org.apache.spark.sql.execution.datasources.AsyncFileDownloader.org$apache$spark$sql$execution$datasources$AsyncFileDownloader$$downloadFile(AsyncFileDownloader.scala:93)\n\tat org.apache.spark.sql.execution.datasources.AsyncFileDownloader$$anon$1.call(AsyncFileDownloader.scala:73)\n\tat org.apache.spark.sql.execution.datasources.AsyncFileDownloader$$anon$1.call(AsyncFileDownloader.scala:72)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\t... 3 more\n\nDriver stacktrace:\n\tat org.apache.spark.scheduler.DAGScheduler.failJobAndIndependentStages(DAGScheduler.scala:2610)\n\tat org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2(DAGScheduler.scala:2559)\n\tat org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2$adapted(DAGScheduler.scala:2558)\n\tat scala.collection.mutable.ResizableArray.foreach(ResizableArray.scala:62)\n\tat scala.collection.mutable.ResizableArray.foreach$(ResizableArray.scala:55)\n\tat scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:49)\n\tat org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:2558)\n\tat org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1(DAGScheduler.scala:1200)\n\tat org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1$adapted(DAGScheduler.scala:1200)\n\tat scala.Option.foreach(Option.scala:407)\n\tat org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:1200)\n\tat org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:2798)\n\tat org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2740)\n\tat org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2729)\n\tat org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)\n\tat org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:978)\n\tat org.apache.spark.SparkContext.runJob(SparkContext.scala:2215)\n\tat org.apache.spark.SparkContext.runJob(SparkContext.scala:2236)\n\tat org.apache.spark.SparkContext.runJob(SparkContext.scala:2255)\n\tat org.apache.spark.sql.execution.SparkPlan.executeTake(SparkPlan.scala:519)\n\tat org.apache.spark.sql.execution.SparkPlan.executeTake(SparkPlan.scala:472)\n\tat org.apache.spark.sql.execution.CollectLimitExec.executeCollect(limit.scala:48)\n\tat org.apache.spark.sql.Dataset.collectFromPlan(Dataset.scala:3779)\n\tat org.apache.spark.sql.Dataset.$anonfun$head$1(Dataset.scala:2769)\n\tat org.apache.spark.sql.Dataset.$anonfun$withAction$1(Dataset.scala:3770)\n\tat org.apache.spark.sql.catalyst.QueryPlanningTracker$.withTracker(QueryPlanningTracker.scala:107)\n\tat org.apache.spark.sql.execution.SQLExecution$.withTracker(SQLExecution.scala:232)\n\tat org.apache.spark.sql.execution.SQLExecution$.executeQuery$1(SQLExecution.scala:110)\n\tat org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLExecution.scala:135)\n\tat org.apache.spark.sql.catalyst.QueryPlanningTracker$.withTracker(QueryPlanningTracker.scala:107)\n\tat org.apache.spark.sql.execution.SQLExecution$.withTracker(SQLExecution.scala:232)\n\tat org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$5(SQLExecution.scala:135)\n\tat org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:253)\n\tat org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:134)\n\tat org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:775)\n\tat org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:68)\n\tat org.apache.spark.sql.Dataset.withAction(Dataset.scala:3768)\n\tat org.apache.spark.sql.Dataset.head(Dataset.scala:2769)\n\tat org.apache.spark.sql.Dataset.take(Dataset.scala:2976)\n\tat org.apache.spark.sql.Dataset.getRows(Dataset.scala:289)\n\tat org.apache.spark.sql.Dataset.showString(Dataset.scala:328)\n\tat sun.reflect.GeneratedMethodAccessor466.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)\n\tat py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)\n\tat py4j.Gateway.invoke(Gateway.java:282)\n\tat py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)\n\tat py4j.commands.CallCommand.execute(CallCommand.java:79)\n\tat py4j.GatewayConnection.run(GatewayConnection.java:238)\n\tat java.lang.Thread.run(Thread.java:750)\nCaused by: org.apache.spark.sql.execution.datasources.FileDownloadException: Failed to download file path: s3://airbnb-scraper-bucket-0-1-1/data/prod_data_tables/occupancy/20220809_postprocessed/parition_col=14/part-00001-ca416466-47ee-4f98-abed-78ab7ce0cd64.c000.snappy.parquet, range: 0-37915, partition values: [14], isDataPresent: false, eTag: 6f95e63d5853f5584dcbc2aee3678cd2-1\n\tat org.apache.spark.sql.execution.datasources.AsyncFileDownloader.next(AsyncFileDownloader.scala:142)\n\tat org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.getNextFile(FileScanRDD.scala:314)\n\tat org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.nextIterator(FileScanRDD.scala:229)\n\tat org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:189)\n\tat org.apache.spark.sql.execution.FileSourceScanExec$$anon$1.hasNext(DataSourceScanExec.scala:661)\n\tat org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.columnartorow_nextBatch_0$(Unknown Source)\n\tat org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.processNext(Unknown Source)\n\tat org.apache.spark.sql.execution.BufferedRowIterator.hasNext(BufferedRowIterator.java:35)\n\tat org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.hasNext(Unknown Source)\n\tat org.apache.spark.sql.execution.WholeStageCodegenExec$$anon$1.hasNext(WholeStageCodegenExec.scala:954)\n\tat org.apache.spark.sql.execution.SparkPlan.$anonfun$getByteArrayRdd$1(SparkPlan.scala:369)\n\tat org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2(RDD.scala:898)\n\tat org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2$adapted(RDD.scala:898)\n\tat org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)\n\tat org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:373)\n\tat org.apache.spark.rdd.RDD.iterator(RDD.scala:337)\n\tat org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)\n\tat org.apache.spark.scheduler.Task.run(Task.scala:133)\n\tat org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:506)\n\tat org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1474)\n\tat org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:509)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\t... 1 more\nCaused by: java.io.FileNotFoundException: No such file or directory 's3://airbnb-scraper-bucket-0-1-1/data/prod_data_tables/occupancy/20220809_postprocessed/parition_col=14/part-00001-ca416466-47ee-4f98-abed-78ab7ce0cd64.c000.snappy.parquet'\n\tat com.amazon.ws.emr.hadoop.fs.s3n.S3NativeFileSystem.getFileStatus(S3NativeFileSystem.java:521)\n\tat com.amazon.ws.emr.hadoop.fs.EmrFileSystem.getFileStatus(EmrFileSystem.java:613)\n\tat org.apache.parquet.hadoop.util.HadoopInputFile.fromPath(HadoopInputFile.java:61)\n\tat org.apache.spark.sql.execution.datasources.parquet.ParquetFooterReader.readFooter(ParquetFooterReader.java:39)\n\tat org.apache.spark.sql.execution.datasources.parquet.ParquetFileFormat.$anonfun$buildPrefetcherWithPartitionValues$1(ParquetFileFormat.scala:538)\n\tat org.apache.spark.sql.execution.datasources.AsyncFileDownloader.org$apache$spark$sql$execution$datasources$AsyncFileDownloader$$downloadFile(AsyncFileDownloader.scala:93)\n\tat org.apache.spark.sql.execution.datasources.AsyncFileDownloader$$anon$1.call(AsyncFileDownloader.scala:73)\n\tat org.apache.spark.sql.execution.datasources.AsyncFileDownloader$$anon$1.call(AsyncFileDownloader.scala:72)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\t... 3 more\n\n(<class 'py4j.protocol.Py4JJavaError'>, Py4JJavaError('An error occurred while calling o1505.showString.\\n', JavaObject id=o1506), <traceback object at 0xffff9c6cb690>)"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=152",
+              "$$hashKey": "object:10570"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660168621525_1373366816",
+      "id": "paragraph_1660168621525_1373366816",
+      "dateCreated": "2022-08-10T21:57:01+0000",
+      "dateStarted": "2022-08-11T00:58:58+0000",
+      "dateFinished": "2022-08-11T00:59:06+0000",
+      "status": "ERROR",
+      "$$hashKey": "object:8976"
+    },
+    {
+      "text": "%pyspark\ncomplete_table_backup_loc = \"s3://airbnb-scraper-bucket-0-1-1/data/backup/occupancy_20220811/\"\ncomplete_df.write.mode(\"overwrite\").parquet(complete_table_backup_loc)",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-10T21:59:05+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=45",
+              "$$hashKey": "object:9530"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660168695906_99119144",
+      "id": "paragraph_1660168695906_99119144",
+      "dateCreated": "2022-08-10T21:58:15+0000",
+      "dateStarted": "2022-08-10T21:59:05+0000",
+      "dateFinished": "2022-08-10T22:02:16+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8977"
+    },
+    {
+      "text": "%pyspark\ncomplete_table_backup_loc = \"s3://airbnb-scraper-bucket-0-1-1/data/backup/occupancy_20220811/\"\nbackup_tot_df = spark.read.parquet(complete_table_backup_loc)\nbackup_tot_df.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-11T00:37:53+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=137",
+              "$$hashKey": "object:9996"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=138",
+              "$$hashKey": "object:9997"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660178241699_1354670537",
+      "id": "paragraph_1660178241699_1354670537",
+      "dateCreated": "2022-08-11T00:37:21+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:9865",
+      "dateFinished": "2022-08-11T00:37:54+0000",
+      "dateStarted": "2022-08-11T00:37:53+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----+----------+---------+----------+----------+---------------------+----------------------+--------+------------------+-------------------+-------------------+------------+\n|index|      date|available|max_nights|min_nights|available_for_checkin|available_for_checkout|bookable|                id|       trigger_time|             pulled|parition_col|\n+-----+----------+---------+----------+----------+---------------------+----------------------+--------+------------------+-------------------+-------------------+------------+\n|    0|2022-08-01|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|    1|2022-08-02|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|    2|2022-08-03|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|    3|2022-08-04|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|    4|2022-08-05|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|    5|2022-08-06|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|    6|2022-08-07|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|    7|2022-08-08|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|    8|2022-08-09|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|    9|2022-08-10|     true|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   10|2022-08-11|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   11|2022-08-12|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   12|2022-08-13|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   13|2022-08-14|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   14|2022-08-15|     true|      1125|         2|                 true|                 false|    true|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   15|2022-08-16|     true|      1125|         2|                false|                  true|    true|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   16|2022-08-17|    false|      1125|         2|                false|                  true|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   17|2022-08-18|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   18|2022-08-19|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   19|2022-08-20|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n+-----+----------+---------+----------+----------+---------------------+----------------------+--------+------------------+-------------------+-------------------+------------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%pyspark\n\"\"\"\nNext:\n    * delete prod table and replace with backup (overwrite mode?)\n\"\"\"",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-10T21:59:49+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "'\\nNext:\\n    * delete prod table and replace with backup (overwrite mode?)\\n'\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660168745757_1420742628",
+      "id": "paragraph_1660168745757_1420742628",
+      "dateCreated": "2022-08-10T21:59:05+0000",
+      "dateStarted": "2022-08-10T21:59:49+0000",
+      "dateFinished": "2022-08-10T22:02:16+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8978"
+    },
+    {
+      "text": "%pyspark\nprod_table_occ = \"s3://airbnb-scraper-bucket-0-1-1/data/prod_data_tables/occupancy/20220809_postprocessed/\"\nbackup_tot_df.show()\nbackup_tot_df.write.mode(\"overwrite\").partitionBy(\"parition_col\").parquet(prod_table_occ)",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-11T00:39:13+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----+----------+---------+----------+----------+---------------------+----------------------+--------+------------------+-------------------+-------------------+------------+\n|index|      date|available|max_nights|min_nights|available_for_checkin|available_for_checkout|bookable|                id|       trigger_time|             pulled|parition_col|\n+-----+----------+---------+----------+----------+---------------------+----------------------+--------+------------------+-------------------+-------------------+------------+\n|    0|2022-08-01|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|    1|2022-08-02|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|    2|2022-08-03|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|    3|2022-08-04|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|    4|2022-08-05|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|    5|2022-08-06|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|    6|2022-08-07|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|    7|2022-08-08|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|    8|2022-08-09|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|    9|2022-08-10|     true|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   10|2022-08-11|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   11|2022-08-12|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   12|2022-08-13|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   13|2022-08-14|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   14|2022-08-15|     true|      1125|         2|                 true|                 false|    true|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   15|2022-08-16|     true|      1125|         2|                false|                  true|    true|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   16|2022-08-17|    false|      1125|         2|                false|                  true|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   17|2022-08-18|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   18|2022-08-19|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n|   19|2022-08-20|    false|      1125|         2|                false|                 false|   false|556044909477337200|2022-08-10 11:34:40|2022-08-10 11:35:58|           0|\n+-----+----------+---------+----------+----------+---------------------+----------------------+--------+------------------+-------------------+-------------------+------------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=140",
+              "$$hashKey": "object:10099"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=141",
+              "$$hashKey": "object:10100"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660168789223_1967760114",
+      "id": "paragraph_1660168789223_1967760114",
+      "dateCreated": "2022-08-10T21:59:49+0000",
+      "dateStarted": "2022-08-11T00:39:13+0000",
+      "dateFinished": "2022-08-11T00:43:48+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8979"
+    },
+    {
+      "text": "%pyspark\nprod_df = spark.read.parquet(prod_table_occ)",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-11T00:45:38+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=144",
+              "$$hashKey": "object:10181"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660169214578_1350102206",
+      "id": "paragraph_1660169214578_1350102206",
+      "dateCreated": "2022-08-10T22:06:54+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:8980",
+      "dateFinished": "2022-08-11T00:45:38+0000",
+      "dateStarted": "2022-08-11T00:45:38+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      }
+    },
+    {
+      "text": "%pyspark\nprod_df.select(\"date\").distinct().count()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-11T00:45:52+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=145",
+              "$$hashKey": "object:10385"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=146",
+              "$$hashKey": "object:10386"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=147",
+              "$$hashKey": "object:10387"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660177964756_499531253",
+      "id": "paragraph_1660177964756_499531253",
+      "dateCreated": "2022-08-11T00:32:44+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:9631",
+      "dateFinished": "2022-08-11T00:46:05+0000",
+      "dateStarted": "2022-08-11T00:45:52+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "487\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%pyspark\nprod_df.count()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-11T00:46:02+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=148",
+              "$$hashKey": "object:10441"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=149",
+              "$$hashKey": "object:10442"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660178752441_1167388192",
+      "id": "paragraph_1660178752441_1167388192",
+      "dateCreated": "2022-08-11T00:45:52+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:10186",
+      "dateFinished": "2022-08-11T00:46:06+0000",
+      "dateStarted": "2022-08-11T00:46:02+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "160187915\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%pyspark\nprod_df.printSchema()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-11T00:57:55+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660178762381_1656834675",
+      "id": "paragraph_1660178762381_1656834675",
+      "dateCreated": "2022-08-11T00:46:02+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:10275",
+      "dateFinished": "2022-08-11T00:57:55+0000",
+      "dateStarted": "2022-08-11T00:57:55+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- index: long (nullable = true)\n |-- date: string (nullable = true)\n |-- available: boolean (nullable = true)\n |-- max_nights: long (nullable = true)\n |-- min_nights: long (nullable = true)\n |-- available_for_checkin: boolean (nullable = true)\n |-- available_for_checkout: boolean (nullable = true)\n |-- bookable: boolean (nullable = true)\n |-- id: long (nullable = true)\n |-- trigger_time: timestamp (nullable = true)\n |-- pulled: timestamp (nullable = true)\n |-- parition_col: integer (nullable = true)\n\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%pyspark\nprod_df.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-11T00:59:31+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=153",
+              "$$hashKey": "object:10970"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660179475279_10632873",
+      "id": "paragraph_1660179475279_10632873",
+      "dateCreated": "2022-08-11T00:57:55+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:10451",
+      "dateFinished": "2022-08-11T00:59:32+0000",
+      "dateStarted": "2022-08-11T00:59:31+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----+----------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\n|index|      date|available|max_nights|min_nights|available_for_checkin|available_for_checkout|bookable|      id|       trigger_time|             pulled|parition_col|\n+-----+----------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\n|    0|2022-04-01|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|    1|2022-04-02|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|    2|2022-04-03|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|    3|2022-04-04|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|    4|2022-04-05|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|    5|2022-04-06|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|    6|2022-04-07|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|    7|2022-04-08|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|    8|2022-04-09|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|    9|2022-04-10|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   10|2022-04-11|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   11|2022-04-12|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   12|2022-04-13|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   13|2022-04-14|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   14|2022-04-15|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   15|2022-04-16|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   16|2022-04-17|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   17|2022-04-18|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   18|2022-04-19|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   19|2022-04-20|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n+-----+----------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%pyspark\ncol = \"date\"\nform = \"yyyy-MM-dd\"\nprod_df_date = prod_df.withColumnRenamed(col, \"temp\")\nprod_df_date = prod_df_date.withColumn(col, F.to_timestamp(F.col(\"temp\"), form))\nprod_df_date = prod_df_date.drop(\"temp\").select(prod_df.columns)\nprod_df_date.show()\nprod_df_date.printSchema()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-11T01:02:15+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=156",
+              "$$hashKey": "object:11084"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660179564489_765695360",
+      "id": "paragraph_1660179564489_765695360",
+      "dateCreated": "2022-08-11T00:59:24+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:10589",
+      "dateFinished": "2022-08-11T01:02:16+0000",
+      "dateStarted": "2022-08-11T01:02:15+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----+-------------------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\n|index|               date|available|max_nights|min_nights|available_for_checkin|available_for_checkout|bookable|      id|       trigger_time|             pulled|parition_col|\n+-----+-------------------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\n|    0|2022-04-01 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|    1|2022-04-02 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|    2|2022-04-03 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|    3|2022-04-04 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|    4|2022-04-05 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|    5|2022-04-06 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|    6|2022-04-07 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|    7|2022-04-08 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|    8|2022-04-09 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|    9|2022-04-10 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   10|2022-04-11 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   11|2022-04-12 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   12|2022-04-13 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   13|2022-04-14 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   14|2022-04-15 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   15|2022-04-16 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   16|2022-04-17 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   17|2022-04-18 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   18|2022-04-19 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n|   19|2022-04-20 00:00:00|    false|      1125|         6|                false|                 false|   false|46880383|2022-04-18 00:00:00|2022-04-18 23:52:17|           3|\n+-----+-------------------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\nonly showing top 20 rows\n\nroot\n |-- index: long (nullable = true)\n |-- date: timestamp (nullable = true)\n |-- available: boolean (nullable = true)\n |-- max_nights: long (nullable = true)\n |-- min_nights: long (nullable = true)\n |-- available_for_checkin: boolean (nullable = true)\n |-- available_for_checkout: boolean (nullable = true)\n |-- bookable: boolean (nullable = true)\n |-- id: long (nullable = true)\n |-- trigger_time: timestamp (nullable = true)\n |-- pulled: timestamp (nullable = true)\n |-- parition_col: integer (nullable = true)\n\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%pyspark\ncomplete_table_backup_loc_occ_fix_date = \"s3://airbnb-scraper-bucket-0-1-1/data/backup/occupancy_20220812/\"\nprod_df_date.write.mode(\"overwrite\").parquet(complete_table_backup_loc_occ_fix_date)",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-11T01:03:13+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=157",
+              "$$hashKey": "object:11104"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660179564657_5826161",
+      "id": "paragraph_1660179564657_5826161",
+      "dateCreated": "2022-08-11T00:59:24+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:10658",
+      "dateFinished": "2022-08-11T01:07:08+0000",
+      "dateStarted": "2022-08-11T01:03:13+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      }
+    },
+    {
+      "text": "%pyspark\nbacked_up_fix_date_df = spark.read.parquet(complete_table_backup_loc_occ_fix_date)\nbacked_up_fix_date_df.show()\nbacked_up_fix_date_df.printSchema()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-11T01:06:57+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=158",
+              "$$hashKey": "object:11150"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=159",
+              "$$hashKey": "object:11151"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660179564781_1792005589",
+      "id": "paragraph_1660179564781_1792005589",
+      "dateCreated": "2022-08-11T00:59:24+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:10727",
+      "dateFinished": "2022-08-11T01:07:08+0000",
+      "dateStarted": "2022-08-11T01:06:57+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----+-------------------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\n|index|               date|available|max_nights|min_nights|available_for_checkin|available_for_checkout|bookable|      id|       trigger_time|             pulled|parition_col|\n+-----+-------------------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\n|    0|2022-08-01 00:00:00|    false|      1125|         2|                false|                 false|   false|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|    1|2022-08-02 00:00:00|    false|      1125|         2|                false|                 false|   false|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|    2|2022-08-03 00:00:00|    false|      1125|         2|                false|                 false|   false|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|    3|2022-08-04 00:00:00|    false|      1125|         2|                false|                 false|   false|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|    4|2022-08-05 00:00:00|     true|      1125|         2|                 true|                 false|    true|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|    5|2022-08-06 00:00:00|     true|      1125|         2|                 true|                  true|    true|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|    6|2022-08-07 00:00:00|     true|      1125|         2|                 true|                  true|    true|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|    7|2022-08-08 00:00:00|     true|      1125|         2|                 true|                  true|    true|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|    8|2022-08-09 00:00:00|     true|      1125|         2|                 true|                  true|    true|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|    9|2022-08-10 00:00:00|     true|      1125|         2|                 true|                  true|    true|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|   10|2022-08-11 00:00:00|     true|      1125|         2|                 true|                  true|    true|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|   11|2022-08-12 00:00:00|     true|      1125|         2|                 true|                  true|    true|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|   12|2022-08-13 00:00:00|     true|      1125|         2|                 true|                  true|    true|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|   13|2022-08-14 00:00:00|     true|      1125|         2|                 true|                  true|    true|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|   14|2022-08-15 00:00:00|     true|      1125|         2|                 true|                  true|    true|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|   15|2022-08-16 00:00:00|     true|      1125|         2|                 true|                  true|    true|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|   16|2022-08-17 00:00:00|     true|      1125|         2|                 true|                  true|    true|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|   17|2022-08-18 00:00:00|     true|      1125|         2|                 true|                  true|    true|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|   18|2022-08-19 00:00:00|     true|      1125|         2|                 true|                  true|    true|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n|   19|2022-08-20 00:00:00|     true|      1125|         2|                 true|                  true|    true|52005271|2022-08-05 00:00:00|2022-08-05 06:21:50|          11|\n+-----+-------------------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\nonly showing top 20 rows\n\nroot\n |-- index: long (nullable = true)\n |-- date: timestamp (nullable = true)\n |-- available: boolean (nullable = true)\n |-- max_nights: long (nullable = true)\n |-- min_nights: long (nullable = true)\n |-- available_for_checkin: boolean (nullable = true)\n |-- available_for_checkout: boolean (nullable = true)\n |-- bookable: boolean (nullable = true)\n |-- id: long (nullable = true)\n |-- trigger_time: timestamp (nullable = true)\n |-- pulled: timestamp (nullable = true)\n |-- parition_col: integer (nullable = true)\n\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%pyspark\nprod_table_occ = \"s3://airbnb-scraper-bucket-0-1-1/data/prod_data_tables/occupancy/20220809_postprocessed/\"\nbacked_up_fix_date_df.write.mode(\"overwrite\").partitionBy(\"parition_col\").parquet(prod_table_occ)",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-11T01:08:31+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=160",
+              "$$hashKey": "object:11244"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660179564903_65243084",
+      "id": "paragraph_1660179564903_65243084",
+      "dateCreated": "2022-08-11T00:59:24+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:10796",
+      "dateFinished": "2022-08-11T01:12:53+0000",
+      "dateStarted": "2022-08-11T01:08:31+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      }
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-11T01:39:32+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=180",
+              "$$hashKey": "object:11765"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660179565002_462676004",
+      "id": "paragraph_1660179565002_462676004",
+      "dateCreated": "2022-08-11T00:59:25+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:10865",
+      "dateFinished": "2022-08-11T01:32:46+0000",
+      "dateStarted": "2022-08-11T01:32:38+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      }
+    },
+    {
+      "text": "%pyspark\nbig_test_occ = spark.read.parquet(prod_table_occ)\nbig_test_occ.show()\ntest_df.groupby(\"check_in\").count().show()\nprint(big_test_occ.select(\"date\").distinct().count())\nbig_test_occ.count()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-11T01:39:40+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=184",
+              "$$hashKey": "object:11770"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=185",
+              "$$hashKey": "object:11771"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=186",
+              "$$hashKey": "object:11772"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=187",
+              "$$hashKey": "object:11773"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=188",
+              "$$hashKey": "object:11774"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=189",
+              "$$hashKey": "object:11775"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=190",
+              "$$hashKey": "object:11776"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=191",
+              "$$hashKey": "object:11777"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660180349532_889405507",
+      "id": "paragraph_1660180349532_889405507",
+      "dateCreated": "2022-08-11T01:12:29+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:11175",
+      "dateFinished": "2022-08-11T01:34:07+0000",
+      "dateStarted": "2022-08-11T01:33:55+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----+-------------------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\n|index|               date|available|max_nights|min_nights|available_for_checkin|available_for_checkout|bookable|      id|       trigger_time|             pulled|parition_col|\n+-----+-------------------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\n|    0|2022-06-01 00:00:00|    false|      1125|         1|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|    1|2022-06-02 00:00:00|    false|      1125|         1|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|    2|2022-06-03 00:00:00|    false|      1125|         1|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|    3|2022-06-04 00:00:00|    false|      1125|         1|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|    4|2022-06-05 00:00:00|    false|      1125|         1|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|    5|2022-06-06 00:00:00|    false|      1125|         1|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|    6|2022-06-07 00:00:00|    false|      1125|         1|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|    7|2022-06-08 00:00:00|    false|      1125|         1|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|    8|2022-06-09 00:00:00|     true|      1125|         1|                 true|                 false|    true|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|    9|2022-06-10 00:00:00|     true|      1125|         1|                 true|                  true|    true|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   10|2022-06-11 00:00:00|    false|      1125|         1|                false|                  true|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   11|2022-06-12 00:00:00|    false|      1125|         1|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   12|2022-06-13 00:00:00|    false|      1125|         1|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   13|2022-06-14 00:00:00|    false|      1125|         1|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   14|2022-06-15 00:00:00|     true|      1125|         1|                 true|                 false|    true|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   15|2022-06-16 00:00:00|    false|      1125|         1|                false|                  true|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   16|2022-06-17 00:00:00|    false|      1125|         1|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   17|2022-06-18 00:00:00|     true|      1125|         1|                 true|                 false|    true|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   18|2022-06-19 00:00:00|     true|      1125|         1|                 true|                  true|    true|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   19|2022-06-20 00:00:00|     true|      1125|         1|                 true|                  true|    true|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n+-----+-------------------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\nonly showing top 20 rows\n\n+-------------------+------+\n|           check_in| count|\n+-------------------+------+\n|2022-05-01 00:00:00| 30452|\n|2022-08-18 00:00:00|257056|\n|2022-10-19 00:00:00|102060|\n|2022-06-18 00:00:00|263914|\n|2022-06-09 00:00:00|242497|\n|2022-04-24 00:00:00| 16110|\n|2022-09-13 00:00:00|133210|\n|2022-05-27 00:00:00|172588|\n|2022-07-03 00:00:00|263877|\n|2022-09-06 00:00:00|154596|\n|2022-10-18 00:00:00|102052|\n|2022-07-06 00:00:00|263905|\n|2022-08-24 00:00:00|224448|\n|2022-05-22 00:00:00|145495|\n|2022-06-10 00:00:00|247864|\n|2022-08-11 00:00:00|295254|\n|2022-08-08 00:00:00|298143|\n|2022-08-28 00:00:00|202950|\n|2022-07-04 00:00:00|263882|\n|2022-10-07 00:00:00|133193|\n+-------------------+------+\nonly showing top 20 rows\n\n487\n160187915\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%pyspark\nbig_test_occ = spark.read.parquet(prod_table_occ)\nbig_test_occ.show()\ntest_df.groupby(\"check_in\").count().show()\nprint(big_test_occ.select(\"date\").distinct().count())\nbig_test_occ.count()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-11T01:39:41+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=192",
+              "$$hashKey": "object:12130"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=193",
+              "$$hashKey": "object:12131"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=194",
+              "$$hashKey": "object:12132"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=195",
+              "$$hashKey": "object:12133"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=196",
+              "$$hashKey": "object:12134"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=197",
+              "$$hashKey": "object:12135"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=198",
+              "$$hashKey": "object:12136"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=199",
+              "$$hashKey": "object:12137"
+            },
+            {
+              "jobUrl": "http://ip-172-31-25-7.ec2.internal:4040/jobs/job?id=200",
+              "$$hashKey": "object:12138"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660181578695_189184238",
+      "id": "paragraph_1660181578695_189184238",
+      "dateCreated": "2022-08-11T01:32:58+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:11355",
+      "dateFinished": "2022-08-11T01:40:08+0000",
+      "dateStarted": "2022-08-11T01:39:41+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----+-------------------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\n|index|               date|available|min_nights|max_nights|available_for_checkin|available_for_checkout|bookable|      id|       trigger_time|             pulled|parition_col|\n+-----+-------------------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\n|    0|2022-06-01 00:00:00|    false|         1|      1125|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|    1|2022-06-02 00:00:00|    false|         1|      1125|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|    2|2022-06-03 00:00:00|    false|         1|      1125|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|    3|2022-06-04 00:00:00|    false|         1|      1125|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|    4|2022-06-05 00:00:00|    false|         1|      1125|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|    5|2022-06-06 00:00:00|    false|         1|      1125|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|    6|2022-06-07 00:00:00|    false|         1|      1125|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|    7|2022-06-08 00:00:00|    false|         1|      1125|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|    8|2022-06-09 00:00:00|     true|         1|      1125|                 true|                 false|    true|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|    9|2022-06-10 00:00:00|     true|         1|      1125|                 true|                  true|    true|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   10|2022-06-11 00:00:00|    false|         1|      1125|                false|                  true|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   11|2022-06-12 00:00:00|    false|         1|      1125|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   12|2022-06-13 00:00:00|    false|         1|      1125|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   13|2022-06-14 00:00:00|    false|         1|      1125|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   14|2022-06-15 00:00:00|     true|         1|      1125|                 true|                 false|    true|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   15|2022-06-16 00:00:00|    false|         1|      1125|                false|                  true|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   16|2022-06-17 00:00:00|    false|         1|      1125|                false|                 false|   false|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   17|2022-06-18 00:00:00|     true|         1|      1125|                 true|                 false|    true|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   18|2022-06-19 00:00:00|     true|         1|      1125|                 true|                  true|    true|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n|   19|2022-06-20 00:00:00|     true|         1|      1125|                 true|                  true|    true|48274325|2022-06-07 00:00:00|2022-06-07 06:21:42|           5|\n+-----+-------------------+---------+----------+----------+---------------------+----------------------+--------+--------+-------------------+-------------------+------------+\nonly showing top 20 rows\n\n+-------------------+------+\n|           check_in| count|\n+-------------------+------+\n|2022-05-01 00:00:00| 30452|\n|2022-08-18 00:00:00|257056|\n|2022-10-19 00:00:00|102060|\n|2022-06-18 00:00:00|263914|\n|2022-06-09 00:00:00|242497|\n|2022-04-24 00:00:00| 16110|\n|2022-09-13 00:00:00|133210|\n|2022-05-27 00:00:00|172588|\n|2022-07-03 00:00:00|263877|\n|2022-09-06 00:00:00|154596|\n|2022-10-18 00:00:00|102052|\n|2022-07-06 00:00:00|263905|\n|2022-08-24 00:00:00|224448|\n|2022-05-22 00:00:00|145495|\n|2022-06-10 00:00:00|247864|\n|2022-08-11 00:00:00|295254|\n|2022-08-08 00:00:00|298143|\n|2022-08-28 00:00:00|202950|\n|2022-07-04 00:00:00|263882|\n|2022-10-07 00:00:00|133193|\n+-------------------+------+\nonly showing top 20 rows\n\n487\n160965000\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-11T01:39:41+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1660181981496_1059355794",
+      "id": "paragraph_1660181981496_1059355794",
+      "dateCreated": "2022-08-11T01:39:41+0000",
+      "status": "READY",
+      "focus": true,
+      "$$hashKey": "object:11810"
+    }
+  ],
+  "name": "new",
+  "id": "2H9S8B2GJ",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/new"
+}

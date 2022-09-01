@@ -2,7 +2,7 @@ import pyspark.sql.utils
 import s3fs
 from delta import *
 from pyspark.sql import functions as F
-from pyspark.sql.types import IntegerType
+import pyspark.sql.types as T
 
 
 def recursive_list_dir(fs, dirs, levels=1, prepend="s3://"):
@@ -66,11 +66,17 @@ class PysparkPostProcessor(PostProcessor):
         self.spark = configure_spark_with_delta_pip(builder).getOrCreate()
 
     def apply_partition_col(self):
-        self.data = self.data.withColumn("parition_col", (F.col("id") % self.num_partitions).cast(IntegerType()))
+        self.data = self.data.withColumn("parition_col", (F.col("id") % self.num_partitions).cast(T.IntegerType()))
 
     def to_datetime_wrapper(self, col, format_):
         self.data = self.data.withColumnRenamed(col, "temp")
         self.data = self.data.withColumn(col, F.to_timestamp(F.col("temp"), format_))
+        self.data = self.data.drop("temp")
+        self.reset_col_order()
+
+    def type_conversion(self, col: str, type: T.DataType):
+        self.data = self.data.withColumnRenamed(col, "temp")
+        self.data = self.data.withColumn(col, F.col("temp").cast(type))
         self.data = self.data.drop("temp")
         self.reset_col_order()
 

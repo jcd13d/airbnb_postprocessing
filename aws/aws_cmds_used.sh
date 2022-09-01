@@ -88,9 +88,13 @@ ssh -i ~/.ssh/btd_key_pair.pem -N -L 8157:ec2-34-229-203-169.compute-1.amazonaws
 ssh -i ~/.ssh/btd_key_pair.pem -N -L 8157:ec2-34-229-203-169.compute-1.amazonaws.com:8890 hadoop@ec2-34-229-203-169.compute-1.amazonaws.com
 
 ssh -i ~/.ssh/btd_key_pair.pem -N -L 8157:ec2-54-158-20-37.compute-1.amazonaws.com:8890 hadoop@ec2-54-158-20-37.compute-1.amazonaws.com
-ssh -i ~/.ssh/btd_key_pair.pem -N -L 8158:ec2-54-158-20-37.compute-1.amazonaws.com:8088 hadoop@ec2-54-158-20-37.compute-1.amazonaws.com
-ec2-54-83-89-215.compute-1.amazonaws.com
+ssh -i ~/.ssh/btd_key_pair.pem -N -L 8157:ec2-54-227-91-241.compute-1.amazonaws.com:8890 hadoop@ec2-54-227-91-241.compute-1.amazonaws.com
+ssh -i ~/.ssh/btd_key_pair.pem -N -L 8158:ec2-54-227-91-241.compute-1.amazonaws.com:8088 hadoop@ec2-54-227-91-241.compute-1.amazonaws.com
+ec2-54-227-91-241.compute-1.amazonaws.com
 ssh -i ~/btd_key_pair.pem hadoop@ec2-54-158-20-37.compute-1.amazonaws.com
+
+ssh -i ~/.ssh/btd_key_pair.pem -N -L 8156:ec2-54-235-41-107.compute-1.amazonaws.com:8890 hadoop@ec2-54-235-41-107.compute-1.amazonaws.com
+
 # bootstrap actions to run installation when you spin up cluster
 # https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-bootstrap.html
 
@@ -146,3 +150,7 @@ spark-submit --packages io.delta:delta-core_2.12:2.0.0 s3://airbnb-scraper-bucke
 spark-submit --packages io.delta:delta-core_2.12:2.0.0 --py-files s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/dependencies.zip s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/postprocessing.py
 spark-submit --packages io.delta:delta-core_2.12:2.0.0 --py-files s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/dependencies.zip s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/listings_postprocessor.py
 spark-submit --packages io.delta:delta-core_2.12:2.0.0 --py-files s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/dependencies.zip s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/unique_ids.py
+
+spark-submit --packages io.delta:delta-core_2.12:2.0.0 s3://airbnb-scraper-bucket-0-1-1/data/sandbox/pipelines_scripts/occupancy_process_justin_ex.py
+spark-submit --packages io.delta:delta-core_2.12:2.0.0 --py-files s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/dependencies.zip s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/listings_postprocessor.py
+

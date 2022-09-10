@@ -20,14 +20,14 @@ class GetUniqueIds:
     def get_unique_ids(self):
         newest_pull = self.df.agg({"postprocess_date": "max"}).collect()[0]["max(postprocess_date)"]
         # self.df.where(F.col("process_date") == newest_pull).show()
-        df = self.df.where(F.col("process_date") == newest_pull).select("id").distinct().toPandas()
+        df = self.df.where(F.col("postprocess_date") == newest_pull).select("id").distinct().toPandas()
         self.ids = list(df['id'].values)
         print(self.ids)
 
     def write_ids(self):
-        # with self.s3.open(self.ids_output_loc, "w") as f:
-        #     json.dump({"ids": self.ids}, f, indent=4)
-        pass
+        with self.s3.open(self.ids_output_loc, "w") as f:
+            json.dump({"ids": self.ids}, f, indent=4)
+        # pass
 
     def run(self):
         self.get_unique_ids()

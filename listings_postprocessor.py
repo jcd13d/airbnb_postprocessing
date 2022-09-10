@@ -6,8 +6,8 @@ import datetime
 
 
 class ListingsPostprocessor(PysparkPostProcessor):
-    def __init__(self, data_loc, out_path, partition=[], num_partitions=20, write_type="parquet", dir_level=2, schema=None):
-        super(ListingsPostprocessor, self).__init__(data_loc, out_path, partition, num_partitions, write_type, dir_level, schema)
+    def __init__(self, data_loc, out_path, partition=[], num_partitions=20, write_type="parquet", dir_level=2, schema=None, keys=None):
+        super(ListingsPostprocessor, self).__init__(data_loc, out_path, partition, num_partitions, write_type, dir_level, schema, keys)
         self.run_time = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
 
     def postprocess_logic(self):
@@ -20,14 +20,12 @@ class ListingsPostprocessor(PysparkPostProcessor):
 
         self.type_conversion("id", T.LongType())
         self.type_conversion("parition_col", T.IntegerType())
-        self.type_conversion("avgRating", T.FloatType())
-        self.type_conversion("avgRating", T.FloatType())
-        # TODO add more if needed?
+        self.data = self.data.dropDuplicates(subset=self.keys)
 
         self.data.show()
 
-    def write_data(self):
-        pass
+    # def write_data(self):
+    #     pass
 
     def clean_directories(self):
         pass
@@ -76,6 +74,9 @@ if __name__ == "__main__":
             "parition_col",
             "config_name",
             "postprocess_date"
+        ],
+        "keys": [
+            "id"
         ]
     }
 

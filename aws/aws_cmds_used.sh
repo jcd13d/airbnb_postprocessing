@@ -152,5 +152,6 @@ spark-submit --packages io.delta:delta-core_2.12:2.0.0 --py-files s3://airbnb-sc
 spark-submit --packages io.delta:delta-core_2.12:2.0.0 --py-files s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/dependencies.zip s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/unique_ids.py
 
 spark-submit --packages io.delta:delta-core_2.12:2.0.0 s3://airbnb-scraper-bucket-0-1-1/data/sandbox/pipelines_scripts/occupancy_process_justin_ex.py
-spark-submit --packages io.delta:delta-core_2.12:2.0.0 --py-files s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/dependencies.zip s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/listings_postprocessor.py
-
+spark-submit --packages io.delta:delta-core_2.12:2.0.0 --py-files s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/dependencies.zip s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/listings_postprocessor.py > log1.txt 2>log2.txt
+spark-submit --packages io.delta:delta-core_2.12:2.0.0 --py-files s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/dependencies.zip s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/postprocessing.py > log1.txt 2>log2.txt
+spark-submit --packages io.delta:delta-core_2.12:2.0.0 --py-files s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/dependencies.zip s3://airbnb-scraper-bucket-0-1-1/postprocessing_files/unique_ids.py > log1.txt 2>log2.txt

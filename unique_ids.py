@@ -18,14 +18,16 @@ class GetUniqueIds:
         self.ids = None
 
     def get_unique_ids(self):
-        newest_pull = self.df.agg({"process_date": "max"}).collect()[0]["max(process_date)"]
+        newest_pull = self.df.agg({"postprocess_date": "max"}).collect()[0]["max(postprocess_date)"]
         # self.df.where(F.col("process_date") == newest_pull).show()
         df = self.df.where(F.col("process_date") == newest_pull).select("id").distinct().toPandas()
         self.ids = list(df['id'].values)
+        print(self.ids)
 
     def write_ids(self):
-        with self.s3.open(self.ids_output_loc, "w") as f:
-            json.dump({"ids": self.ids}, f, indent=4)
+        # with self.s3.open(self.ids_output_loc, "w") as f:
+        #     json.dump({"ids": self.ids}, f, indent=4)
+        pass
 
     def run(self):
         self.get_unique_ids()
@@ -34,7 +36,8 @@ class GetUniqueIds:
 
 if __name__ == "__main__":
     config = {
-        "listings_loc": "s3://airbnb-scraper-bucket-0-1-1/data/listings_postprocessed/",
+        # "listings_loc": "s3://airbnb-scraper-bucket-0-1-1/data/listings_postprocessed/",
+        "listings_loc": "s3://airbnb-scraper-bucket-0-1-1/data/prod_data_tables/listings/20220831_postprocessed",
         "ids_output_loc": "s3://airbnb-scraper-bucket-0-1-1/master_configs/ids_dynamic/ids.json"
     }
     print(config)

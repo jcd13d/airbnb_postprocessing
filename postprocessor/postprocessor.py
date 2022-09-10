@@ -55,9 +55,11 @@ class PostProcessor:
 
 
 class PysparkPostProcessor(PostProcessor):
-    def __init__(self, data_loc, out_path, partition=[], num_partitions=20, write_type="parquet", dir_level=2, schema=None):
+    def __init__(self, data_loc, out_path, partition=[], num_partitions=20, write_type="parquet",
+                 dir_level=2, schema=None, keys=None):
         super(PysparkPostProcessor, self).__init__(data_loc, out_path, partition, num_partitions, schema)
         self.write_type = write_type
+        self.keys = keys
         self.dirs = recursive_list_dir(self.s3, [self.data_loc], dir_level)
         # self.spark = SparkSession.builder.appName("processor").getOrCreate()
         builder = pyspark.sql.SparkSession.builder.appName("Post Processor") \
@@ -91,6 +93,7 @@ class PysparkPostProcessor(PostProcessor):
         date_format = "yyyyMMdd'T'kkmmss"
         self.to_datetime_wrapper("trigger_time", date_format)
         self.to_datetime_wrapper("pulled", date_format)
+        self.data = self.data.dropDuplicates(subset=self.keys)
 
         print("\n\n\n", self.data.count(), "\n\n\n")
 
@@ -102,15 +105,16 @@ class PysparkPostProcessor(PostProcessor):
             self.data = None
 
     def write_data(self):
-        print("\n\n\n\n", "WRITINGGGGGGG", "\n\n\n\n")
-        print(self.out_path)
-        if self.write_type == "parquet":
-            if self.s3.exists(self.out_path):
-                self.data.write.partitionBy("parition_col").mode("append").parquet(self.out_path)
-            else:
-                self.data.write.partitionBy("parition_col").mode("overwrite").parquet(self.out_path)
-        elif self.write_type == "delta":
-            self.data.write.partitionBy("parition_col").format("delta").mode("append").save(self.out_path)
+        # print("\n\n\n\n", "WRITINGGGGGGG", "\n\n\n\n")
+        # print(self.out_path)
+        # if self.write_type == "parquet":
+        #     if self.s3.exists(self.out_path):
+        #         self.data.write.partitionBy("parition_col").mode("append").parquet(self.out_path)
+        #     else:
+        #         self.data.write.partitionBy("parition_col").mode("overwrite").parquet(self.out_path)
+        # elif self.write_type == "delta":
+        #     self.data.write.partitionBy("parition_col").format("delta").mode("append").save(self.out_path)
+        pass
 
     def clean_directories(self):
         [self.s3.rm(p, recursive=True) for p in self.dirs]

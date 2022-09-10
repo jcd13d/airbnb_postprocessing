@@ -36,6 +36,11 @@ if __name__ == "__main__":
                 "trigger_time",
                 "pulled",
                 "parition_col"
+            ],
+            "keys": [
+                "id",
+                "date",
+                "pulled"
             ]
         },
         "price_postprocess": {
@@ -54,6 +59,12 @@ if __name__ == "__main__":
                 "trigger_time",
                 "pulled",
                 "parition_col"
+            ],
+            "keys": [
+                "id",
+                "check_in",
+                "check_out",
+                "pulled"
             ]
         },
         "review_postprocess": {

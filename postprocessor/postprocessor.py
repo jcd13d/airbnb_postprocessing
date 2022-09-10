@@ -105,16 +105,15 @@ class PysparkPostProcessor(PostProcessor):
             self.data = None
 
     def write_data(self):
-        # print("\n\n\n\n", "WRITINGGGGGGG", "\n\n\n\n")
-        # print(self.out_path)
-        # if self.write_type == "parquet":
-        #     if self.s3.exists(self.out_path):
-        #         self.data.write.partitionBy("parition_col").mode("append").parquet(self.out_path)
-        #     else:
-        #         self.data.write.partitionBy("parition_col").mode("overwrite").parquet(self.out_path)
-        # elif self.write_type == "delta":
-        #     self.data.write.partitionBy("parition_col").format("delta").mode("append").save(self.out_path)
-        pass
+        print("\n\n\n\n", "WRITINGGGGGGG", "\n\n\n\n")
+        print(self.out_path)
+        if self.write_type == "parquet":
+            if self.s3.exists(self.out_path):
+                self.data.write.partitionBy("parition_col").mode("append").parquet(self.out_path)
+            else:
+                self.data.write.partitionBy("parition_col").mode("overwrite").parquet(self.out_path)
+        elif self.write_type == "delta":
+            self.data.write.partitionBy("parition_col").format("delta").mode("append").save(self.out_path)
 
     def clean_directories(self):
         [self.s3.rm(p, recursive=True) for p in self.dirs]

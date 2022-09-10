@@ -27,8 +27,8 @@ class ListingsPostprocessor(PysparkPostProcessor):
     # def write_data(self):
     #     pass
 
-    def clean_directories(self):
-        pass
+    # def clean_directories(self):
+    #     pass
 
 
 if __name__ == "__main__":
